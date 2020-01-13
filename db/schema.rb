@@ -10,10 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+ 
 ActiveRecord::Schema.define(version: 2020_01_13_133232) do
+
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
 
   create_table "comments", force: :cascade do |t|
     t.string "content"
@@ -22,6 +26,7 @@ ActiveRecord::Schema.define(version: 2020_01_13_133232) do
     t.bigint "course_id", null: false
     t.index ["course_id"], name: "index_comments_on_course_id"
   end
+
 
   create_table "courses", force: :cascade do |t|
     t.string "info_title"
@@ -40,4 +45,5 @@ ActiveRecord::Schema.define(version: 2020_01_13_133232) do
   end
 
   add_foreign_key "comments", "courses"
+
 end
