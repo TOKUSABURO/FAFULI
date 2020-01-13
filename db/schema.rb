@@ -10,17 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 0) do
-=======
-ActiveRecord::Schema.define(version: 2020_01_13_084850) do
->>>>>>> 2e31ba94245aaec04b11a962fed1507d17e74e56
+ 
+ActiveRecord::Schema.define(version: 2020_01_13_133232) do
+
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-<<<<<<< HEAD
-=======
+
+  create_table "comments", force: :cascade do |t|
+    t.string "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "course_id", null: false
+    t.index ["course_id"], name: "index_comments_on_course_id"
+  end
+
+
   create_table "courses", force: :cascade do |t|
     t.string "info_title"
     t.string "info_details"
@@ -31,5 +38,12 @@ ActiveRecord::Schema.define(version: 2020_01_13_084850) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
->>>>>>> 2e31ba94245aaec04b11a962fed1507d17e74e56
+  create_table "purchases", force: :cascade do |t|
+    t.integer "ammount"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "comments", "courses"
+
 end
