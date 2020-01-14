@@ -12,15 +12,10 @@
 
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2020_01_13_133232) do
 =======
 ActiveRecord::Schema.define(version: 2020_01_13_133005) do
 >>>>>>> 67d724b398142774d14021c06ab3e5792b76c878
-=======
-
-ActiveRecord::Schema.define(version: 2020_01_13_133005) do
->>>>>>> 5f536142629e69643376dadedf6c83e6bada7b80
 =======
 
 ActiveRecord::Schema.define(version: 2020_01_13_133005) do
