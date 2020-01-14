@@ -13,3 +13,21 @@
  *= require_tree .
  *= require_self
  */
+body{
+  margin: auto;
+  background-color: #fff1e9;
+}
+.bg-pink{
+  background-color: #fff1e9;
+}
+.text-pink{
+  color: #fff1e9;
+}
+.bg-violet{
+  background-color: #543864;
+}
+.head{
+  background-image: url('bg-head.jpg');
+  background-size: cover;
+  height: 400px;
+}
