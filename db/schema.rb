@@ -10,17 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 0) do
-=======
 ActiveRecord::Schema.define(version: 2020_01_13_084850) do
->>>>>>> 2e31ba94245aaec04b11a962fed1507d17e74e56
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-<<<<<<< HEAD
-=======
   create_table "courses", force: :cascade do |t|
     t.string "info_title"
     t.string "info_details"
@@ -31,5 +25,4 @@ ActiveRecord::Schema.define(version: 2020_01_13_084850) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
->>>>>>> 2e31ba94245aaec04b11a962fed1507d17e74e56
 end
