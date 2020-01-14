@@ -1,0 +1,14 @@
+<ul>
+  <% @comments.each do |comments| %>
+    <% if comment.id.present? %>
+      <li>
+        <p><br><%= comment.content %><br>
+       
+        <%= link_to "delete", [comment.course, comment], method: :delete%>
+        <%= link_to "edit ", edit_course_comment_path(comment.course, comment) %></p>
+        </li>
+  
+    <% end %>
+  <% end %>
+<%= render 'comments/form'%>
+</ul> 
