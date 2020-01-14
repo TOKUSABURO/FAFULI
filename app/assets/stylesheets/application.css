@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+.register{
+    text-align: center;
+    display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
