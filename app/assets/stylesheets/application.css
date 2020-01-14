@@ -14,8 +14,14 @@
  *= require_self
  */
 body{
+  width: 1365px;
   margin: auto;
   background-color: #fff1e9;
+}
+.main-body{
+  width: 1365px;
+  margin:0px auto;
+  padding: 0px;
 }
 .bg-pink{
   background-color: #fff1e9;
@@ -30,4 +36,9 @@ body{
   background-image: url('bg-head.jpg');
   background-size: cover;
   height: 400px;
+}
+.nav-item a:hover{
+  text-decoration: none;
+  background-color: transparent;
+  color: black;
 }
