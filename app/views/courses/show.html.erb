@@ -25,5 +25,18 @@
   <%= @course.price %>
 </p>
 
+<p>List of Comments(Contents below are important)</p>
+
+<!-- Get an HTML id of this comments_area and update only the part of that div -->
+<div id="comments_area">
+  <!-- Render to display the posted comment list on the blogs detail page -->
+  <%= render partial: 'comments/index', locals: { comments: @comments, course: @course } %>
+</div>
+
+<!-- Render to display the comment field on the blogs detail page -->
+<%= render partial: 'comments/form', locals: { comment: @comment, course: @course } %>
+
+</div>
+
 <%= link_to 'Edit', edit_course_path(@course) %> |
 <%= link_to 'Back', courses_path %>
