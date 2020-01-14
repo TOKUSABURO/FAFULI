@@ -8,7 +8,10 @@ class CoursesController < ApplicationController
 
   # GET /courses/1
   def show
+    @comments = @course.comments
+    @comment = @course.comments.build
   end
+  
 
   # GET /courses/new
   def new
