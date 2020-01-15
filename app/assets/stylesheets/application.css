@@ -61,7 +61,7 @@ body{
 .sign_up_btn{
   background-color: skyblue;
   border-radius: 40px;
-  width: 60%;
+  /* width: 80%; */
   margin-left: 4rem;
   height: 40px;
   color: white;
