@@ -17,7 +17,8 @@
    width: 1365px;
  }
 body{
-  width: 1365px;
+  width: 1365px; 
+  /* width: 100%; */
   margin: auto;
   background-color: #fff1e9;
 }
