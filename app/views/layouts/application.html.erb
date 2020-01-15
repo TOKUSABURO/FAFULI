@@ -34,7 +34,9 @@
           <% if user_signed_in? %>
             <li class="nav-item px-4">
               <a class="text-dark px-2"><%= current_user.name %></a>
+              <%= image_tag current_user.profile_image.url %>
               <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "btn btn-info text-white px-4 shadow" %>
+              <li><%= link_to 'Change account', edit_user_registration_path %></li>
             </li>
           <% else %>
             <li class="px-4">
