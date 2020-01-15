@@ -1,0 +1,12 @@
+<h1>Users#show</h1>
+<p>Find me in app/views/users/show.html.erb</p>
+
+  
+    <li>
+      <div class="item">
+        <%= link_to 'message', conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: :post %>
+        <%= link_to 'Conversation',conversations_path %>
+      </div>
+    </li>
+    
+  
