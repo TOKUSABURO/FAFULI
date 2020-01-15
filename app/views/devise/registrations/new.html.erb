@@ -1,3 +1,4 @@
+<div class="sign_up">
 <div class = "register">
  <h2>Sign up</h2>
 
@@ -12,80 +13,70 @@
     <div class="field">
       <%= f.label :name %><br />
       <%= f.text_field :name, autofocus: true, autocomplete: "user name" %>
+    
+      <%= f.text_field :name, autofocus: true, autocomplete: "user name" ,placeholder:"Full Name",class: "form-control"%>
+
     </div>
 
     <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    
+      <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder:"Email",class: "form-control" %>
     </div>
 
     <div class="field">
       <%= f.label :gender %><br />
-      <%= f.select :gender, [ 'Male', 'Female'] %>
+      <%= f.select :gender, [ 'Male', 'Female'] ,class: "form-control"%>
     </div>
 
     <div class="field">
       <%= f.label :user_type %><br />
-      <%= f.select :user_type, [ 'Teacher', 'Learner'] %>
+      <%= f.select :user_type, [ 'Teacher', 'Learner'] ,class: "form-control"%>
     </div>
 
     <div class="field">
-      <%= f.label :hobbies %><br />
-      <%= f.text_field :hobbies, autofocus: true, autocomplete: "user hobbies" %>
+    
+      <%= f.text_field :hobbies, autofocus: true, autocomplete: "user hobbies" ,placeholder:"hobbies",class: "form-control"%>
     </div>
 
     <div class="field">
       <%= f.label :skills %><br />
-      <%= f.text_field :skills, autofocus: true, autocomplete: "user skills if any" %>
+      <%= f.text_field :skills, autofocus: true, autocomplete: "user skills if any" ,placeholder:"fill it when you are teacher",class: "form-control"%>
     </div>
 
     <div class="field">
       <%= f.label :qualification %><br />
-      <%= f.text_field :qualification, autofocus: true, autocomplete: "user qualification" %>
+      <%= f.text_field :qualification, autofocus: true, autocomplete: "user qualification" ,placeholder:"concerned to teacher only",class: "form-control"%>
     </div>
 
     <div class="field">
-      <%= f.label :age %><br />
-      <%= f.number_field :age, autofocus: true, autocomplete: "user age" %>
+   
+      <%= f.number_field :age, autofocus: true, autocomplete: "user age",placeholder:"age" ,class: "form-control"%>
     </div>
 
     <div class="field">
-      <%= f.label :self_introduction %><br />
-      <%= f.text_field :self_introduction, autofocus: true, autocomplete: "user name" %>
-    </div>
-
-
-
-    <div class="field">
-
-      <%= f.radio_button :admin, 'false', :checked => true %> 
-      <%= label :admin, 'False' %>
-      <%= f.radio_button :admin, 'true' %>
-      <%= label :admin, 'True' %>
-      
-    </div >
-
-
-
     
+      <%= f.text_field :self_introduction, autofocus: true, autocomplete: "user name" ,placeholder:"self_introduction",class: "form-control"%>
+    </div>
+
 
     <div class="field">
-      <%= f.label :password %>
+     
       <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> characters minimum)</em>
       <% end %><br />
-      <%= f.password_field :password, autocomplete: "new-password" %>
+      <%= f.password_field :password, autocomplete: "new-password",placeholder:"password",class: "form-control" %>
     </div>
 
     <div class="field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  
+      <%= f.password_field :password_confirmation, autocomplete: "new-password",placeholder:"password_confirmation",class: "form-control" %>
     </div>
 
     <div class="actions">
-      <%= f.submit "Sign up" %>
+      <%= f.submit "Sign up",class:"sign_up_btn"%>
     </div>
   <% end %>
-
+Already have account?
   <%= render "devise/shared/links" %>
+</div>
 </div>

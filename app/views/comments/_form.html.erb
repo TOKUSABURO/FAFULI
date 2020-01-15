@@ -1,0 +1,5 @@
+<%= form_for ([@course, @course.comments.build]) do |f| %>
+  <%= f.text_area :content, class:"single-input", placeholder:"enter comment"%>
+  <%= f.submit "send comment"%>
+  
+    <%end%> 
