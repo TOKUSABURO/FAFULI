@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+
   
   resources :courses
+
+
   devise_for :users, controllers: {
     registrations: "users/registrations",
     omniauth_callbacks: "users/omniauth_callbacks"
@@ -14,7 +17,7 @@ Rails.application.routes.draw do
   root 'home#index'
   resources :purchases
   resources :users, only: [:show]
-  
+
   resources :courses do
     resources :comments
   end
