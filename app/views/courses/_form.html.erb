@@ -1,3 +1,4 @@
+<div class= "form">
 <%= form_with(model: course, local: true) do |form| %>
   <% if course.errors.any? %>
     <div id="error_explanation">
@@ -10,35 +11,37 @@
       </ul>
     </div>
   <% end %>
-  <div class="form">
-<div class="first">
+  
+<div class="form1">
   <div class="field">
     <%= form.label :info_title %>
-    <%= form.text_field :info_title %>
+    <%= form.text_field :info_title ,class: "form-control"%>
   </div>
 
   <div class="field">
     <%= form.label :info_details %>
-    <%= form.text_field :info_details %>
+    <%= form.text_field :info_details ,class: "form-control"%>
   </div>
+  <div class="field">
+  <%= form.label :price %>
+  <%= form.number_field :price,class: "form-control" %>
 </div>
+</div>
+<div class= "form2">
   <div class="field">
     <%= form.label :free_info_topics %>
-    <%= form.text_field :free_info_topics %>
+    <%= form.text_field :free_info_topics ,class: "form-control"%>
   </div>
 
   <div class="field">
     <%= form.label :free_info_details %>
-    <%= form.text_field :free_info_details %>
+    <%= form.text_field :free_info_details,class: "form-control" %>
   </div>
-
-  <div class="field">
-    <%= form.label :price %>
-    <%= form.number_field :price %>
-  </div>
-
+</div>
   <div class="actions">
-    <%= form.submit %>
-  </div>
-  </div>
+  <div class="btn">
+    <%= form.submit%>
+   
+
 <% end %>
+</div>

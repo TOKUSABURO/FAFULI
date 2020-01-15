@@ -17,7 +17,8 @@
    width: 1365px;
  }
 body{
-  width: 1365px;
+  width: 1365px; 
+  /* width: 100%; */
   margin: auto;
   background-color: #fff1e9;
 }
@@ -49,7 +50,7 @@ body{
   
   margin-left: 20rem;
   width: 50%;
-  border-style: solid;
+  /* border-style: solid; */
   border: 2px solid black;
   background-color: white;
   margin-top: 3rem;
@@ -64,8 +65,8 @@ body{
 .sign_up_btn{
   background-color: skyblue;
   border-radius: 40px;
-  /* width: 80%; */
-  margin-left: 4rem;
+   width: 40%; 
+
   height: 40px;
   color: white;
 
@@ -73,7 +74,11 @@ body{
 #login
 {
 background-color: gray;
+
 } 
 h2{
   text-align: center;
+}
+.actions{
+  margin-left: 8rem;
 }
