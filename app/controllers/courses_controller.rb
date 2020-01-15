@@ -1,10 +1,12 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
-
+  before_action :authenticate_user, only: [:new, :create, :edit, :update, :destroy]
+  before_action :set_search
   # GET /courses
   def index
-    @courses = Course.all
+    # @courses = Course.all
+      @q = Course.ransack(params[:q])
+      @courses = @q.result
   end
 
   # GET /courses/1
@@ -17,6 +19,7 @@ class CoursesController < ApplicationController
   # GET /courses/new
   def new
     @course = Course.new
+    
   end
 
   # GET /courses/1/edit
@@ -54,7 +57,10 @@ class CoursesController < ApplicationController
     def set_course
       @course = Course.find(params[:id])
     end
-
+    def set_search
+      @q = Course.ransack(params[:q])
+      @courses = @q.result
+    end
     # Only allow a trusted parameter "white list" through.
     def course_params
       params.require(:course).permit(:info_title, :info_details, :free_info_topics, :free_info_details, :price)

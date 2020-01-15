@@ -57,7 +57,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'carrierwave'
-
+gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'mini_magick'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
