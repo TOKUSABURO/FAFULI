@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
   get 'users/show'
-  devise_for :users
 
  get 'home/index'
 
@@ -12,7 +11,7 @@ Rails.application.routes.draw do
   root 'home#index'
   resources :purchases
   resources :users, only: [:show]
-  
+
   resources :courses do
     resources :comments
   end
