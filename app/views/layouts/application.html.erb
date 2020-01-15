@@ -15,13 +15,16 @@
       <p class="alert"><%= alert %></p>
       <% if user_signed_in? %>
       <p>signed in as <%= current_user.name %>
-      <%= image_tag current_user.profile_image.url %></p>
+      <% if current_user.profile_image.present? %>
+        <%= image_tag current_user.profile_image.url %></p>
+      <% end %>
         <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
         <li><%= link_to 'Change account', edit_user_registration_path %></li>
         
       <% else %>
         <li><%= link_to 'Login', new_user_session_path %></li>
         <li><%= link_to 'Sign up', new_user_registration_path %></li>
+        <li><%= link_to 'Sign up/in with Google', user_google_omniauth_authorize_path %></li>
       <% end %>
     <%= yield %>
 
