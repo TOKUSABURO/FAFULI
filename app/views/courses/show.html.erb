@@ -1,42 +1,42 @@
-<p id="notice"><%= notice %></p>
+<div class="container p-4">
+  <div class="card float-left" style="width: 47%;">
+    <div class="card-body">
+      <h5 class="card-title">
+        <strong class="mr-auto"><%= @course.info_title %></strong>
+      </h5>
+      <h6 class="card-subtitle mb-2 text-muted">
+        <strong>Price:</strong>
+        <%= @course.price %>
+      </h6><br>
+      <p class="card-text">
+        <strong>Info details:</strong><br>
+        <%= @course.info_details %>
+      </p>
+      <p class="card-text">
+        <strong>Free info topics:</strong><br>
+        <%= @course.free_info_topics %>
+      </p>
+      <p class="card-text">
+        <strong>Free info details:</strong><br>
+        <%= @course.free_info_details %>
+      </p>
+      <% if @course.user_id == current_user.id %>
+        <%= link_to 'Edit course information', edit_course_path(@course), class: "btn btn-success" %>
+      <% else %>
+        <a href="#" class="btn btn-success">Purchase</a>
+      <% end %>
 
-<p>
-  <strong>Info title:</strong>
-  <%= @course.info_title %>
-</p>
+    </div>
+  </div>
 
-<p>
-  <strong>Info details:</strong>
-  <%= @course.info_details %>
-</p>
-
-<p>
-  <strong>Free info topics:</strong>
-  <%= @course.free_info_topics %>
-</p>
-
-<p>
-  <strong>Free info details:</strong>
-  <%= @course.free_info_details %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @course.price %>
-</p>
-
-<p>List of Comments(Contents below are important)</p>
-
-<!-- Get an HTML id of this comments_area and update only the part of that div -->
-<div id="comments_area">
-  <!-- Render to display the posted comment list on the blogs detail page -->
-  <%= render partial: 'comments/index', locals: { comments: @comments, course: @course } %>
+  <div class="card float-right" style="width: 50%;">
+    <div class="card-body">
+      <h5 class="card-title">Reviews</h5>
+      <div id="comments_area">
+        <!-- Render to display the posted comment list on the blogs detail page -->
+        <%= render partial: 'comments/index', locals: { comments: @comments, course: @course } %>
+      </div>
+      <%= render partial: 'comments/form', locals: { comment: @comment, course: @course } %>
+    </div>
+  </div>
 </div>
-
-<!-- Render to display the comment field on the blogs detail page -->
-<%= render partial: 'comments/form', locals: { comment: @comment, course: @course } %>
-
-</div>
-
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>
