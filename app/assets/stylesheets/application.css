@@ -19,7 +19,8 @@
 body{
   width: 1350px;
   margin: auto;
-  background-color: #fff1e9;
+  background-image: linear-gradient(#fff1e9, skyblue);
+  font-family: Tajawal;
 }
 .main-body{
   min-height: 100vh;
