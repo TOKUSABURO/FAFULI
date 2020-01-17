@@ -32,30 +32,32 @@
       </div>
     </div>
   </div>
-  <% if @user.id == current_user.id %>
-    <div class="my-2">
-      <%= link_to edit_user_registration_path(@user), class: "btn bg-facebook shadow w-25 text-white mb-2" do %>
-        <i class="fas fa-user-edit"></i> Edit Profile
-      <% end %><br>
-    </div>
-    <div class="my-2 w-25 float-left">
-      <%= render 'conversations/index' %>
-    </div>
-  <% else %>
-    <div class="my2">
-      <%= link_to  conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: :post, class: "btn bg-facebook shadow w-25 text-white" do %>
-        <i class="far fa-envelope"></i> Message
-      <% end %>
-    </div>
+  <% if user_signed_in? %>
+    <% if @user.id == current_user.id %>
+      <div class="my-2">
+        <%= link_to edit_user_registration_path(@user), class: "btn bg-facebook shadow w-25 text-white mb-2" do %>
+          <i class="fas fa-user-edit"></i> Edit Profile
+        <% end %><br>
+      </div>
+      <div class="my-2 w-25 float-left">
+        <%= render 'conversations/index' %>
+      </div>
+    <% else %>
+      <div class="my2">
+        <%= link_to  conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: :post, class: "btn bg-facebook shadow w-25 text-white" do %>
+          <i class="far fa-envelope"></i> Message
+        <% end %>
+      </div>
+    <% end %>
   <% end %>
-
 <div class="courses float-right p-2">
   <div class="border card">
     <div class="card-header d-inline">
       <h5 class="w-50 mr-auto float-left">Sold courses by <%= @user.name %></h5>
-      <% if current_user.user_type == 'Teacher' %>
-        <%= link_to 'Sell new course', new_course_path, class: "btn btn-info px-4 text-white float-right" %>
-      <% end %>
+
+        <% if user_signed_in? && current_user.user_type == 'Teacher' %>
+          <%= link_to 'Sell new course', new_course_path, class: "btn btn-info px-4 text-white float-right" %>
+        <% end %>
     </div>
     <div class="card-body">
       <% @sold_courses.each do |sold| %>

@@ -9,6 +9,7 @@
 # migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
+
 ActiveRecord::Schema.define(version: 2020_01_15_132953) do
 
   # These are extensions that must be enabled in order to support this database
@@ -19,7 +20,9 @@ ActiveRecord::Schema.define(version: 2020_01_15_132953) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "course_id", null: false
+    t.bigint "user_id", null: false
     t.index ["course_id"], name: "index_comments_on_course_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "conversations", force: :cascade do |t|
@@ -88,6 +91,7 @@ ActiveRecord::Schema.define(version: 2020_01_15_132953) do
   end
 
   add_foreign_key "comments", "courses"
+  add_foreign_key "comments", "users"
   add_foreign_key "courses", "users"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
