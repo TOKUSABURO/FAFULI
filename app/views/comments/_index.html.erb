@@ -1,14 +1,16 @@
 
   <% comments.each do |comment| %>
     <% if comment.id.present? %>
+    <strong><%= comment.user.name %></strong>
       <p>
         <%= comment.content %><br>
-        <%= link_to [comment.course, comment], method: :delete, class: "text-danger mr-2" do %>
-          <i class="fas fa-trash-alt"></i>
-
-        <% end %>
-        <%= link_to edit_course_comment_path(comment.course, comment), class: "text-info" do %>
-          <i class="far fa-edit"></i>
+          <% if user_signed_in? && comment.user_id == current_user.id %>
+          <%= link_to [comment.course, comment], method: :delete, class: "text-danger mr-2" do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
+          <%= link_to edit_course_comment_path(comment.course, comment), class: "text-info" do %>
+            <i class="far fa-edit"></i>
+          <% end %>
         <% end %>
       </p><hr>
     <% end %>

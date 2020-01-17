@@ -5,33 +5,37 @@
         <strong class="mr-auto"><%= @course.info_title %></strong>
       </h5>
       <h6 class="card-subtitle mb-2 text-muted">
-        <strong>Price:</strong>
-        <%= @course.price %>
+        <strong>Buy:</strong>
+        <%= @course.price %> $
       </h6><br>
       <p class="card-text">
-        <strong>Info details:</strong><br>
+        <strong>Course details:</strong><br>
         <%= @course.info_details %>
       </p>
       <p class="card-text">
-        <strong>Free info topics:</strong><br>
+        <strong>Free topics:</strong><br>
         <%= @course.free_info_topics %>
       </p>
       <p class="card-text">
-        <strong>Free info details:</strong><br>
+        <strong>Free topic details:</strong><br>
         <%= @course.free_info_details %>
       </p>
-      <% if @course.user_id == current_user.id %>
-        <%= link_to 'Edit course information', edit_course_path(@course), class: "btn btn-success" %>
-      <% else %>
-        <a href="#" class="btn btn-success">Purchase</a>
+      <% if user_signed_in? %>
+        <% if @course.user_id == current_user.id %>
+          <%= link_to 'Edit course information', edit_course_path(@course), class: "btn btn-success" %>
+        <% else %>
+          <a href="#" class="btn btn-success">Purchase</a>
+        <% end %>
       <% end %>
 
     </div>
   </div>
 
   <div class="card float-right" style="width: 50%;">
+    <div class="card-header">
+      <h5 class="text-success">Reviews about the course</h5>
+    </div>
     <div class="card-body">
-      <h5 class="card-title">Reviews</h5>
       <div id="comments_area">
         <!-- Render to display the posted comment list on the blogs detail page -->
         <%= render partial: 'comments/index', locals: { comments: @comments, course: @course } %>
