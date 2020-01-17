@@ -7,15 +7,22 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/472ee2df72.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
 <!-- navigation bar -->
     <nav class="navbar navbar-expand-lg navbar-light text-pink bg-light">
       <a class="navbar-brand text-pink" href="#"><h2>First Time Free @Tech</h2></a>
-      <form class="form-inline my-lg-0">
-        <input class="form-control mr-sm-2 rounded-pill" type="search" placeholder="Search">
+     
+     
+      <%= search_form_for @q do |f| %>
+        <%= f.search_field :info_title_or_info_details_cont, class: "form-control mr-sm-2 rounded-pill", placeholder: "Search course" %>
+      <% end %>
+        
+        
       </form>
+      
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
       </button>
@@ -32,12 +39,24 @@
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
           </li>
           <% if user_signed_in? %>
-            <li class="nav-item px-4">
-              <a class="text-dark px-2"><%= current_user.name %></a>
-              <%= image_tag current_user.profile_image.url %>
-              <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "btn btn-info text-white px-4 shadow" %>
-              <li><%= link_to 'Change account', edit_user_registration_path %></li>
-            </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              <strong class="text-dark"><%= current_user.name %></strong>
+              <%= image_tag current_user.profile_image.url, class: "rounded" %>
+            </a>
+      <div class="dropdown-menu p-2" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="#">
+          <%= link_to 'My Profile', user_path(current_user) %>
+        </a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">
+          <%= link_to 'Change account', edit_user_registration_path %>
+        </a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#"><%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "btn btn-outline-danger text-danger btn-sm text-white px-4 shadow" %></a>
+      </div>
+    </li>
+
           <% else %>
             <li class="px-4">
               <%= link_to 'Login', new_user_session_path, class: "btn btn-info text-white px-4 shadow" %>
@@ -50,8 +69,31 @@
 <!-- end of navigation bar -->
     <div class="main-body">
       <%= yield %>
+
     </div>
 
+    <div class="text-pink bg-dark p-4">
+      <h2 class="text-left ">First Time Free @Tech</h2>
+      <div class="row text-pink bg-dark w-75 mt-2">
+
+        <div class="col border-right border-light px-5">
+          <strong><a class="text-pink" href="#">About us</a><br></strong>
+          <strong><a class="text-pink" href="#">How it works</a><br></strong>
+          <strong><a class="text-pink" href="#">Notice</a></strong>
+        </div>
+        <div class="col border-right border-light">
+          <strong><a class="text-pink" href="#"><i class="fab fa-facebook"></i> Facebook</a><br></strong>
+          <strong><a class="text-pink" href="#"><i class="fab fa-twitter"></i>Twitter</a><br></strong>
+          <strong><a class="text-pink" href="#">Google</a></strong>
+        </div>
+        <div class="col">
+          <h5>Contact us</h5>
+          <strong><a href="#" class="text-pink"><i class="fab fa-enverope"></i>freetimesupport@gmail.com</a></strong><br>
+          <strong><a href="#"></a></strong>
+        </div>
+
+      </div>
+    </div>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
