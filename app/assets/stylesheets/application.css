@@ -22,9 +22,20 @@ body{
   background-color: #fff1e9;
 }
 .main-body{
+  min-height: 100vh;
   width: 1350px;
   margin:0px auto;
   padding: 0px;
+}
+.bg-facebook{
+  background-color: #3b5998;
+}
+
+.bg-twitter{
+  background-color: #00acee;
+}
+.bg-google{
+  background-color: #db4a39;
 }
 .bg-pink{
   background-color: #fff1e9;
@@ -39,6 +50,11 @@ body{
   background-image: url('bg-head.jpg');
   background-size: cover;
   height: 400px;
+}
+a:hover{
+  background-color: transparent;
+  color: black;
+  text-decoration: none;
 }
 .nav-item a:hover{
   text-decoration: none;
@@ -56,15 +72,15 @@ body{
 
 
 }
-.register{
+/* .register{
   width: 80%;
   margin-left: 4.5rem;
   padding: 3rem;
-}
+} */
 .sign_up_btn{
   background-color: skyblue;
   border-radius: 40px;
-   width: 40%; 
+   width: 40%;
 
   height: 40px;
   color: white;
@@ -87,4 +103,10 @@ h2{
 }
 .actions{
   margin-left: 8rem;
+}
+.intro{
+  overflow-y: visible;
+}
+.courses{
+  width: 70%;
 }

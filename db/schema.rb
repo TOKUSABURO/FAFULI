@@ -9,12 +9,7 @@
 # migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
-
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2020_01_15_132953) do
-=======
-ActiveRecord::Schema.define(version: 2020_01_14_094607) do
->>>>>>> 47a29f2114bce098eada087d81ff35e17e31a89f
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +37,8 @@ ActiveRecord::Schema.define(version: 2020_01_14_094607) do
     t.integer "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_courses_on_user_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -91,6 +88,7 @@ ActiveRecord::Schema.define(version: 2020_01_14_094607) do
   end
 
   add_foreign_key "comments", "courses"
+  add_foreign_key "courses", "users"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
 end

@@ -1,0 +1,16 @@
+<div class="card" style="width: 100%;">
+  <div class="card-header">
+    <h6>inbox messages</h6>
+  </div>
+  <div class="card-body">
+    <ul class="list-group list-group-flush">
+    <% @conversations.each do |conversation| %>
+        <li class="list-group-item">
+          <% if conversation.target_user(current_user).present? %>
+            <%= link_to conversation.target_user(current_user).name, conversation_messages_path(conversation)%>
+          <% end %>
+        </li>
+    <% end %>
+    </ul>
+  </div>
+</div>
