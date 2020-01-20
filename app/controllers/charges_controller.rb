@@ -4,7 +4,7 @@ end
 
 def create
   # Amount in cents
-  @amount = Course.price
+  @amount = 500
   customer = Stripe::Customer.create({
     email: params[:stripeEmail],
     source: params[:stripeToken],
