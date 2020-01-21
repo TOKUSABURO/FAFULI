@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_14_094607) do
+ActiveRecord::Schema.define(version: 2020_01_17_072836) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,9 @@ ActiveRecord::Schema.define(version: 2020_01_14_094607) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "course_id", null: false
+    t.bigint "user_id", null: false
     t.index ["course_id"], name: "index_comments_on_course_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "conversations", force: :cascade do |t|
@@ -38,13 +40,15 @@ ActiveRecord::Schema.define(version: 2020_01_14_094607) do
     t.integer "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_courses_on_user_id"
   end
 
   create_table "messages", force: :cascade do |t|
     t.text "body"
     t.bigint "conversation_id", null: false
     t.bigint "user_id", null: false
-    t.boolean "read", default: false, null: false
+    t.boolean "read"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["conversation_id"], name: "index_messages_on_conversation_id"
@@ -81,11 +85,14 @@ ActiveRecord::Schema.define(version: 2020_01_14_094607) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
+    t.string "uid"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "comments", "courses"
+  add_foreign_key "comments", "users"
+  add_foreign_key "courses", "users"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
 end

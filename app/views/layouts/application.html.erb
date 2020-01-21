@@ -5,6 +5,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barlow|Belleza|Buda|Cagliostro|Comfortaa|Imprima|Maven+Pro|Syncopate|Tajawal">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://kit.fontawesome.com/472ee2df72.js" crossorigin="anonymous"></script>
@@ -12,37 +13,35 @@
 
   <body>
 <!-- navigation bar -->
-    <nav class="navbar navbar-expand-lg navbar-light text-pink bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light text-pink bg-light sticky-top shadow ">
       <a class="navbar-brand text-pink" href="#"><h2>First Time Free @Tech</h2></a>
-     
-     
+
       <%= search_form_for @q do |f| %>
         <%= f.search_field :info_title_or_info_details_cont, class: "form-control mr-sm-2 rounded-pill", placeholder: "Search course" %>
       <% end %>
-        
-        
-      </form>
-      
+
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-          <li class="nav-item pt-2 px-4 border-right">
-            <%= link_to 'Home', home_index_path %>
+        <ul class="navbar-nav ml-auto my-auto mt-lg-0">
+          <li class="nav-item my-auto px-4 border-right">
+            <%= link_to 'Home', home_index_path, class: "nav-link" %>
           </li>
-          <li class="nav-item px-4 border-right">
-            <a class="nav-link text-pink" href="#">How it works</a>
-          </li>
-          <li class="nav-item px-4 border-right">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          <li class="nav-item my-auto px-4 border-right">
+            <%= link_to 'Course', courses_url, class: "nav-link" %>
           </li>
           <% if user_signed_in? %>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
               <strong class="text-dark"><%= current_user.name %></strong>
-              <%= image_tag current_user.profile_image.url, class: "rounded" %>
+              <% if current_user.profile_image.url %>
+                <%= image_tag current_user.profile_image.url, class: "rounded shadow" %>
+              <% else %>
+                <%= image_tag "user_icon.png", class: "rounded shadow" %>
+              <% end %>
+
             </a>
       <div class="dropdown-menu p-2" aria-labelledby="navbarDropdown">
         <a class="dropdown-item" href="#">
@@ -72,7 +71,7 @@
 
     </div>
 
-    <div class="text-pink bg-dark p-4">
+    <div class="card-footer text-pink bg-dark p-4 sticky-bottom">
       <h2 class="text-left ">First Time Free @Tech</h2>
       <div class="row text-pink bg-dark w-75 mt-2">
 
@@ -88,7 +87,7 @@
         </div>
         <div class="col">
           <h5>Contact us</h5>
-          <strong><a href="#" class="text-pink"><i class="fab fa-enverope"></i>freetimesupport@gmail.com</a></strong><br>
+          <strong><a href="#" class="text-pink"><i class="far fa-envelope"></i>freetimesupport@gmail.com</a></strong><br>
           <strong><a href="#"></a></strong>
         </div>
 
