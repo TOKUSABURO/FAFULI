@@ -22,7 +22,7 @@ class CommentsController < ApplicationController
   end
 
   def update
-    if @comment.update(params[:comment].permit(:content))
+    if @comment.update(params[:comment].permit(:content,:rate))
     redirect_to course_path(@course)
     else
       render 'edit'
@@ -35,5 +35,9 @@ class CommentsController < ApplicationController
 
   def find_comment
     @comment= @course.comments.find(params[:id])
+  end
+
+  def comment_params
+    params.require(:comment).permit(:content, :rate)
   end
   end
