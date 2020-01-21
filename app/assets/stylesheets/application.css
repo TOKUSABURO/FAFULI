@@ -14,17 +14,17 @@
  *= require_self
  */
  html{
-   width: 1350px;
+   width: 100vw;
  }
 body{
-  width: 1350px;
+  width: 100%;
   margin: auto;
   background-image: linear-gradient(#fff1e9, skyblue);
   font-family: Tajawal;
 }
 .main-body{
   min-height: 100vh;
-  width: 1350px;
+  width: 100%;
   margin:0px auto;
   padding: 0px;
 }
