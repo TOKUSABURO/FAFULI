@@ -50,30 +50,51 @@
       </div>
     <% end %>
   <% end %>
-<div class="courses float-right p-2">
-  <div class="border card">
-    <div class="card-header d-inline">
-      <h5 class="w-50 mr-auto float-left">Sold courses by <%= @user.name %></h5>
+  <div class="courses float-right p-2">
+    <% if user_signed_in? && current_user.user_type == 'Teacher' %>
+      <div class="border card">
+        <div class="card-header d-inline">
+          <h5 class="w-50 mr-auto float-left">Sold courses by <%= @user.name %></h5>
 
-        <% if user_signed_in? && current_user.user_type == 'Teacher' %>
-          <%= link_to 'Sell new course', new_course_path, class: "btn btn-info px-4 text-white float-right" %>
-        <% end %>
-    </div>
-    <div class="card-body">
-      <% @sold_courses.each do |sold| %>
-      <div class="card m-2 bg-light shadow-sm m-2" style="width: 100%;">
+            <% if current_user.id == @user.id %>
+              <%= link_to 'Sell new course', new_course_path, class: "btn btn-info px-4 text-white float-right" %>
+            <% end %>
+        </div>
         <div class="card-body">
-          <div class="card-title">
-            <h5 class="w-50 float-left"><%= sold.info_title %></h5>
-            <h4 class="w-50 float-right text-right text-warning">Buy: <%= sold.price %>$</h4>
-          </div>
-          <p class="card-text"><%= sold.info_details %></p>
-          <%= link_to "Follow course", course_path(sold), class: "btn btn-info text-white btn-sm " %>
+          <% @sold_courses.each do |sold| %>
+            <div class="card m-2 bg-light shadow-sm m-2" style="width: 100%;">
+              <div class="card-body">
+                <div class="card-title">
+                  <h5 class="w-50 float-left"><%= sold.info_title %></h5>
+                  <h4 class="w-50 float-right text-right text-warning">Buy: <%= sold.price %>$</h4>
+                </div>
+                <p class="card-text"><%= sold.info_details %></p>
+                <%= link_to "Follow course", course_path(sold), class: "btn btn-info text-white btn-sm " %>
+              </div>
+            </div>
+          <% end %>
         </div>
       </div>
-
-      <% end %>
-    </div>
+    <% else %>
+      <div class="border card">
+        <div class="card-header d-inline">
+          <h5 class="w-50 mr-auto float-left">Purchased courses by <%= @user.name %></h5>
+        </div>
+        <div class="card-body">
+          <% @sold_courses.each do |sold| %>
+            <div class="card m-2 bg-light shadow-sm m-2" style="width: 100%;">
+              <div class="card-body">
+                <div class="card-title">
+                  <h5 class="w-50 float-left"><%= sold.info_title %></h5>
+                  <h4 class="w-50 float-right text-right text-warning">Buy: <%= sold.price %>$</h4>
+                </div>
+                <p class="card-text"><%= sold.info_details %></p>
+                <%= link_to "Follow course", course_path(sold), class: "btn btn-info text-white btn-sm " %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
   </div>
-</div>
 </div>

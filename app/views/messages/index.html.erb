@@ -1,7 +1,11 @@
 <div class="container overflow-auto p-5">
-
-
 <div class="card float-left" style="width: 45%">
+  <div class="card-header">
+    <h5>Your conversations
+  </div>
+  <div class="card-body">
+
+
   <% if @over_ten %>
     <%= link_to 'Previous messages', '?m=all', class: "btn btn-success btn-sm w-50 ml-4 mt-2 text-white" %>
     <hr>
@@ -42,6 +46,7 @@
       <% end %>
     <% end %>
   </div>
+    </div>
 </div>
 
 <div class="card float-right p-4" style="width:45%">
