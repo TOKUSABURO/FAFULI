@@ -30,7 +30,7 @@
             <%= link_to 'Home', home_index_path, class: "nav-link" %>
           </li>
           <li class="nav-item my-auto px-4 border-right">
-            <%= link_to 'Course', courses_url, class: "nav-link" %>
+            <%= link_to 'Courses', courses_url, class: "nav-link" %>
           </li>
           <% if user_signed_in? %>
           <li class="nav-item dropdown">
@@ -39,7 +39,7 @@
               <% if current_user.profile_image.url %>
                 <%= image_tag current_user.profile_image.url, class: "rounded shadow" %>
               <% else %>
-                <%= image_tag "user_icon.png", class: "rounded shadow" %>
+                <%= image_tag "user_icon.png", class: "rounded-full shadow" %>
               <% end %>
 
             </a>
@@ -49,7 +49,7 @@
         </a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="#">
-          <%= link_to 'Change account', edit_user_registration_path %>
+          <%= link_to 'Edit account', edit_user_registration_path %>
         </a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="#"><%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "btn btn-outline-danger text-danger btn-sm text-white px-4 shadow" %></a>
@@ -83,7 +83,7 @@
         <div class="col border-right border-light">
           <strong><a class="text-pink" href="#"><i class="fab fa-facebook"></i> Facebook</a><br></strong>
           <strong><a class="text-pink" href="#"><i class="fab fa-twitter"></i> Twitter</a><br></strong>
-          <strong><a class="text-pink" href="#">Google</a></strong>
+          <strong><a class="text-pink" href="#"><i class="fab fa-google"></i> Google</a></strong>
         </div>
         <div class="col">
           <h5>Contact us</h5>
