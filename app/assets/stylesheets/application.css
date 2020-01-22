@@ -114,3 +114,12 @@ h2{
 .courses{
   width: 70%;
 }
+.form-group img{
+  width: 200px;
+}
+.small_image img{
+  width: 40px;
+}
+.medium_image img{
+  width: 20 0px;
+}

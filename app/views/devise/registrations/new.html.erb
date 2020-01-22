@@ -9,9 +9,13 @@
         <%= f.file_field :profile_image %>
       </div>
 
-      <div class="form-inline form-group">
-        <%= f.text_field :name, autofocus: true, autocomplete: "user name" ,placeholder:"Full Name",class: "form-control w-50"%>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder:"Email",class: "form-control w-50" %>
+      <div class="form-row form-group">
+        <div class="col">
+          <%= f.text_field :name, autofocus: true, autocomplete: "user name" ,placeholder:"Full Name",class: "form-control"%>
+        </div>
+        <div class="col">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder:"Email",class: "form-control" %>
+        </div>
       </div>
 
       <div class="form-inline">
@@ -25,15 +29,23 @@
         </div>
       </div>
 
-      <div class="form-inline form-group">
-        <%= f.number_field :age, autofocus: true, autocomplete: "user age",placeholder:"age" ,class: "form-control w-50"%>
-        <%= f.text_field :hobbies, autofocus: true, autocomplete: "user hobbies" ,placeholder:"hobby",class: "form-control w-50"%>
+      <div class="form-row form-group">
+        <div class="col">
+          <%= f.number_field :age, autofocus: true, autocomplete: "user age",placeholder:"age" ,class: "form-control"%>
+        </div>
+        <div class="col">
+          <%= f.text_field :hobbies, autofocus: true, autocomplete: "user hobbies" ,placeholder:"hobby",class: "form-control"%>
+        </div>
       </div>
 
-      <div class="form-inline form-group">
-        <%= f.password_field :password, autocomplete: "new-password",placeholder:"password (Minimum 6 characters)",class: "form-control w-50" %>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password",placeholder:"password_confirmation",class: "form-control w-50" %>
-      </div>
+        <div class="form-row form-group">
+          <div class="col">
+            <%= f.password_field :password, autocomplete: "new-password",placeholder:"password (Minimum 6 characters)",class: "form-control" %>
+          </div>
+          <div class="col">
+            <%= f.password_field :password_confirmation, autocomplete: "new-password",placeholder:"password_confirmation",class: "form-control" %>
+          </div>
+        </div>
       <div class="border rounded p-2 mt-4">
         <h5 class="text-center">Only Teacher's section</h5>
 
