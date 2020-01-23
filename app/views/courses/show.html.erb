@@ -23,13 +23,6 @@
         <%= @course.free_info_details %>
       </p>
 
-
-
-      <p class="card-text">
-      <strong>rate:</strong><br>
-      <%= @course.rates%>
-    </p>
-
   
       <% if user_signed_in? %>
         <% if @course.user_id == current_user.id %>
