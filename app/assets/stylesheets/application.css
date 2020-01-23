@@ -15,18 +15,21 @@
  */
  html{
    width: 1350px;
+   height: auto;
  }
 body{
   width: 1350px;
   margin: auto;
   background-image: linear-gradient(#fff1e9, skyblue);
   font-family: Tajawal;
+  height: auto;
 }
 .main-body{
   min-height: 100vh;
   width: 1350px;
   margin:0px auto;
   padding: 0px;
+  height: auto;
 }
 .w-45{
   width: 45%;
