@@ -14,11 +14,15 @@
  *= require_self
  */
  html{
+<<<<<<< HEAD
    width: 1350px;
    height: auto;
+=======
+   width: 100vw;
+>>>>>>> 4f6372bf8084e6e0e469f974e06fc93ead18d095
  }
 body{
-  width: 1350px;
+  width: 100%;
   margin: auto;
   background-image: linear-gradient(#fff1e9, skyblue);
   font-family: Tajawal;
@@ -26,7 +30,7 @@ body{
 }
 .main-body{
   min-height: 100vh;
-  width: 1350px;
+  width: 100%;
   margin:0px auto;
   padding: 0px;
   height: auto;
@@ -116,4 +120,13 @@ h2{
 }
 .courses{
   width: 70%;
+}
+.form-group img{
+  width: 200px;
+}
+.small_image img{
+  width: 40px;
+}
+.medium_image img{
+  width: 20 0px;
 }
