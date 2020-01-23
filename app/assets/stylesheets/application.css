@@ -14,12 +14,12 @@
  *= require_self
  */
  html{
-<<<<<<< HEAD
+
    width: 1350px;
    height: auto;
-=======
+
    width: 100vw;
->>>>>>> 4f6372bf8084e6e0e469f974e06fc93ead18d095
+
  }
 body{
   width: 100%;
