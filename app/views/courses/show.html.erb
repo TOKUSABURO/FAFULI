@@ -22,16 +22,15 @@
         <strong>Free topic details:</strong><br>
         <%= @course.free_info_details %>
       </p>
-<<<<<<< HEAD
 
-=======
+
+
       <p class="card-text">
       <strong>rate:</strong><br>
       <%= @course.rates%>
     </p>
 
   
->>>>>>> 45f2563d633f8ff16ebf5fe2c2db4253dec7248d
       <% if user_signed_in? %>
         <% if @course.user_id == current_user.id %>
           <%= link_to 'Edit course information', edit_course_path(@course), class: "btn btn-success" %>
