@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
+
 
   resources :courses
   devise_for :users, controllers: {
