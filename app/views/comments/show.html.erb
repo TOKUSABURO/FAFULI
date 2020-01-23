@@ -6,6 +6,7 @@
  
     <p><strong>Content</strong>：<%= @course.content %></p>
   </div>
+  <%= @comment.rate %></p>
 
   <p>List of Comments(Contents below are important)</p>
 
@@ -18,7 +19,10 @@
    <!-- Render to display the comment field on the posts detail page -->
    <%= render partial: 'comments/form', locals: { commenting: @comment, post: @course } %>
 
+
+
    <%= link_to 'Edit', edit_post_path(@course)  %> |
    <%= link_to 'Return', courses_path  %>
 </div>
 </div>
+
