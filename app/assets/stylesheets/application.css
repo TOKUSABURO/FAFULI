@@ -10,6 +10,7 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+
  *= require_tree .
  *= require_self
  */
@@ -73,30 +74,15 @@ a:hover{
   border: 2px solid black;
   background-color: white;
   margin-top: 3rem;
-
-
 }
-/* .register{
-  width: 80%;
-  margin-left: 4.5rem;
-  padding: 3rem;
-} */
 .sign_up_btn{
   background-color: skyblue;
   border-radius: 40px;
-   width: 40%;
-
+  width: 40%;
   height: 40px;
   color: white;
+}
 
-}
-#login
-{
-background-color: gray;
-}
-h2{
-  text-align: center;
-}
 .navbar-nav li img{
   width: 50px;
   width: 50px;
@@ -122,4 +108,45 @@ h2{
 }
 .medium_image img{
   width: 20 0px;
+}
+.card_comment{
+  max-height: 50vh;
+  overflow-y: scroll;
+}
+
+/* rating styles */
+
+.rating {
+  float:left;
+}
+.rating:not(:checked) > input {
+  position:absolute;
+  top:-9999px;
+  clip:rect(0,0,0,0);
+ }
+.rating:not(:checked) > label {
+  float:right; width:1em; padding:0 .1em;
+  overflow:hidden;
+  white-space:nowrap;
+  cursor:pointer;
+  font-size:200%;
+  line-height:1.2;
+  color:#ddd;
+  text-shadow:1px 1px #bbb, 2px 2px #666, .1em .1em .2em rgba(0,0,0,.5);
+ }
+.rating:not(:checked) > label:before {
+  content: '★ ';
+}
+.rating > input:checked ~ label {
+ color: #f70; text-shadow:1px 1px #c60, 2px 2px #940, .1em .1em .2em rgba(0,0,0,.5);
+ }
+.rating:not(:checked) > label:hover, .rating:not(:checked) > label:hover ~ label {
+  color: gold;
+  text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+}
+.rating > input:checked + label:hover, .rating > input:checked + label:hover ~ label, .rating > input:checked ~ label:hover, .rating > input:checked ~ label:hover ~ label, .rating > label:hover ~ input:checked ~ label {
+  color: #ea0; text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+}
+.rating:not(:checked) > input {
+  display: none;
 }
