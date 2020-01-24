@@ -10,14 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2020_01_15_132953) do
-=======
-ActiveRecord::Schema.define(version: 2020_01_14_094607) do
->>>>>>> 47a29f2114bce098eada087d81ff35e17e31a89f
+ActiveRecord::Schema.define(version: 2020_01_23_180845) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "authentication_providers", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_name_on_authentication_providers"
+  end
 
   create_table "comments", force: :cascade do |t|
     t.string "content"
@@ -42,6 +45,25 @@ ActiveRecord::Schema.define(version: 2020_01_14_094607) do
     t.integer "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_courses_on_user_id"
+  end
+
+  create_table "identities", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "provider"
+    t.string "accesstoken"
+    t.string "refreshtoken"
+    t.string "uid"
+    t.string "name"
+    t.string "email"
+    t.string "nickname"
+    t.string "image"
+    t.string "phone"
+    t.string "urls"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_identities_on_user_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -59,6 +81,39 @@ ActiveRecord::Schema.define(version: 2020_01_14_094607) do
     t.integer "ammount"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "sessions", force: :cascade do |t|
+    t.string "session_id", null: false
+    t.string "data"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["session_id"], name: "index_sessions_on_session_id", unique: true
+    t.index ["updated_at"], name: "index_sessions_on_updated_at"
+  end
+
+  create_table "social_accounts", force: :cascade do |t|
+    t.string "token"
+    t.string "secret"
+    t.bigint "user_id"
+    t.bigint "authentication_provider_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["authentication_provider_id"], name: "index_social_accounts_on_authentication_provider_id"
+    t.index ["user_id"], name: "index_social_accounts_on_user_id"
+  end
+
+  create_table "user_authentications", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "authentication_provider_id"
+    t.string "uid"
+    t.string "token"
+    t.datetime "token_expires_at"
+    t.text "params"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["authentication_provider_id"], name: "index_user_authentications_on_authentication_provider_id"
+    t.index ["user_id"], name: "index_user_authentications_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -85,12 +140,17 @@ ActiveRecord::Schema.define(version: 2020_01_14_094607) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
-    t.string "uid"
+    t.string "uid", limit: 500, default: "", null: false
+    t.string "provider", limit: 50, default: "", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "comments", "courses"
+  add_foreign_key "courses", "users"
+  add_foreign_key "identities", "users"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
+  add_foreign_key "social_accounts", "authentication_providers"
+  add_foreign_key "social_accounts", "users"
 end
