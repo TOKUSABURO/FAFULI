@@ -4,14 +4,16 @@
     <strong><%= comment.user.name %></strong>
       <p>
         <strong class="text-warning">
-          <i class="fas fa-star"></i> Stars:
-          <% if comment.rating.present? %>
-            <%= comment.rating %>
-          <% else %>
-            0
-          <% end %>
-        </strong></p>
-      <p>
+          <small>
+            <i class="fas fa-star"></i> Stars:
+            <% if comment.rating.present? %>
+              <%= comment.rating %>
+            <% else %>
+              0
+            <% end %>
+          </small>
+        </strong>
+      <br>
         <%= comment.content %><br>
           <% if user_signed_in? && comment.user_id == current_user.id %>
           <%= link_to [comment.course, comment], method: :delete, class: "text-danger mr-2" do %>
