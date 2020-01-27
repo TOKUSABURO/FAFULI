@@ -2,7 +2,7 @@
   <% @comments.each do |comments| %>
     <% if comment.id.present? %>
         <br><%= comment.content %>
-
+   
         <%= link_to "delete", [comment.course, comment], method: :delete%>
         <%= link_to "edit ", edit_course_comment_path(comment.course, comment) %>
 
