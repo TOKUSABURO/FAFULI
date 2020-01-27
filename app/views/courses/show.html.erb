@@ -69,3 +69,17 @@
     </div>
   </div>
 </div>
+
+
+
+<script>
+  $('.review-rating').raty({
+    readOnly: true,
+    score: function(){
+      return $(this).attr('datas-score');
+    },
+    path: '/assets/'
+  });
+</script>
+
+
