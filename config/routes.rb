@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  get 'about_us/index'
   resources :courses
   devise_for :users, controllers: {
     registrations: "users/registrations",
@@ -24,6 +25,11 @@ Rails.application.routes.draw do
     resources :messages
 
   end
+
+  resources :about_us do 
+    resources :about_us
+    end
+  
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 
     # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
