@@ -13,6 +13,7 @@
         </strong></p>
       <p>
         <%= comment.content %><br>
+
           <% if user_signed_in? && comment.user_id == current_user.id %>
           <%= link_to [comment.course, comment], method: :delete, class: "text-danger mr-2" do %>
             <i class="fas fa-trash-alt"></i>
