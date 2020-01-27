@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   before_action :find_comment, only: [:destroy, :edit , :update]
 
   def create
-    @comment = @course.comments.create(params[:comment].permit(:content))
+    @comment = @course.comments.create(params[:comment].permit(:rating, :content))
     @comment.user_id = current_user.id
     @comment.save
     if @comment.save
@@ -22,7 +22,7 @@ class CommentsController < ApplicationController
   end
 
   def update
-    if @comment.update(params[:comment].permit(:content,:rate))
+    if @comment.update(params[:comment].permit(:rating, :content))
     redirect_to course_path(@course)
     else
       render 'edit'
