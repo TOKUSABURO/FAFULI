@@ -23,6 +23,7 @@ class CommentsController < ApplicationController
 
   def update
 
+
     if @comment.update(params[:comment].permit(:content,:rate))
 
     if @comment.update(params[:comment].permit(:rating, :content))
