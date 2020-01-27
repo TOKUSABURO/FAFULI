@@ -1,14 +1,18 @@
 Rails.application.routes.draw do
 
-
   get 'about_us/index'
+
   resources :courses
   devise_for :users, controllers: {
+
     registrations: "users/registrations",
+    # Add this
     omniauth_callbacks: "users/omniauth_callbacks"
-}
+  }
+
 
  get 'users/show'
+
  get 'home/index'
   resources :courses
   resources :charges

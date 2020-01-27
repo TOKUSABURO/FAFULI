@@ -2,6 +2,9 @@ class CommentsController < ApplicationController
   before_action :find_course
   before_action :find_comment, only: [:destroy, :edit , :update]
 
+  def index
+    comments = Comment.all.order('created_at ASC')
+  end
   def create
     @comment = @course.comments.create(params[:comment].permit(:rating, :content))
     @comment.user_id = current_user.id

@@ -19,7 +19,7 @@
       <a class="navbar-brand text-pink" href="#"><h2>First Time Free @Tech</h2></a>
 
       <%= search_form_for @q do |f| %>
-        <%= f.search_field :info_title_or_info_details_cont, class: "form-control mr-sm-2 rounded-pill", placeholder: "Search course" %>
+        <%= f.search_field :info_title_or_info_details_cont, class: "form-control mr-sm-2 rounded-pill", placeholder: "Search course", name: "search" %>
       <% end %>
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,12 +38,12 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
               <strong class="text-dark"><%= current_user.name %></strong>
+
               <% if current_user.profile_image.url %>
                 <%= image_tag current_user.profile_image.url, class: "rounded shadow" %>
               <% else %>
                 <%= image_tag "user_icon.png", class: "rounded-full shadow" %>
               <% end %>
-
             </a>
       <div class="dropdown-menu p-2" aria-labelledby="navbarDropdown">
         <a class="dropdown-item" href="#">
@@ -60,6 +60,7 @@
 
           <% else %>
             <li class="px-4">
+            
               <%= link_to 'Login', new_user_session_path, class: "btn btn-info text-white px-4 shadow" %>
             </li>
 
@@ -68,7 +69,9 @@
       </div>
     </nav>
 <!-- end of navigation bar -->
+
     <div class="main-body overflow-auto mb-2">
+
       <%= yield %>
 
     </div>
