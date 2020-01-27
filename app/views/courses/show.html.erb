@@ -49,17 +49,31 @@
     </div>
   </div>
 
-  <div class="card float-right" style="width: 50%;">
+  <div class="card  float-right" style="width: 50%;">
     <div class="card-header">
       <h5 class="text-success">Reviews about the course</h5>
     </div>
-    <div class="card-body">
+    <div class="card_comment card-body">
       <div id="comments_area">
         <!-- Render to display the posted comment list on the blogs detail page -->
         <%= render partial: 'comments/index', locals: { comments: @comments, course: @course } %>
       </div>
+
+    </div>
+    <div class="card-footer">
       <%= render partial: 'comments/form', locals: { comment: @comment, course: @course } %>
     </div>
   </div>
 </div>
+
+
+<script>
+  $('.review-rating').raty({
+    readOnly: true,
+    score: function(){
+      return $(this).attr('datas-score');
+    },
+    path: '/assets/'
+  });
+</script>
 
