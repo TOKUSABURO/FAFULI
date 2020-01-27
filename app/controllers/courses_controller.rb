@@ -31,6 +31,11 @@ class CoursesController < ApplicationController
   # GET /courses/1/edit
   def edit
   end
+  def contact_us
+     @courses = Course.all
+
+  end
+
 
   # POST /courses
   def create
