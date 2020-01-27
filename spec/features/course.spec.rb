@@ -7,7 +7,13 @@ RSpec.feature "course testing", type: :feature do
       password: "password",
       password_confirmation: "password"
     )
-    @user = User.last
+    @user = User.first
+    visit new_user_session_path
+    fill_in 'email', with: 'aimable@gmail.com'
+    fill_in 'password', with: 'password'
+    click_button 'Log in'
+
+
     course = Course.create(
       info_title: "ruby",
       info_details: "programming language for web applications",
@@ -18,8 +24,8 @@ RSpec.feature "course testing", type: :feature do
     )
   end
   scenario "course creation is valid with course tittle, details, free topic, free detail and price" do
-    course = Course.last
-    expect(course).to be_valid
+    @course = Course.last
+    expect(@course).to be_valid
   end
   scenario "It is not valid when one parameter is missing" do
     @user = User.last
