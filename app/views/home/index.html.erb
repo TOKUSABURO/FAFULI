@@ -1,10 +1,12 @@
 <div class="head">
   <!-- header -->
   <div class="ml-auto text-right p-5 w-50 text-pink">
-    <h1>Please consult and ask</h1> <br>
+    <h1 class="text-right">Please consult and ask</h1> <br>
     <h3>First free! provides an opportunity <br> to be assured</h3>
     <% if user_signed_in? %>
-      <%= link_to 'Register course', new_course_path, class: "btn btn-info px-4 text-white btn-lg" %>
+      <% if current_user.user_type == 'Teacher' %>
+        <%= link_to 'Register course', new_course_path, class: "btn btn-info px-4 text-white btn-lg" %>
+      <% end %>
     <% else %>
       <%= link_to 'Get started', new_user_registration_path, class: "btn btn-info px-4 text-white btn-lg" %>
     <% end %>
@@ -15,7 +17,7 @@
 <!-- middle section -->
 <div class="my-4 text-center mx-5">
   <h4>You can choose a best tutor to work with!!</h4>
-    <div class="row row-cols-1 row-cols-md-4">
+    <div class="row row-cols-1 row-cols-md-6">
     <% @teachers.each do |teacher| %>
       <div class="col mb-4">
         <div class="card h-100 shadow-sm">
@@ -25,7 +27,7 @@
             <%= image_tag "user_icon.png", class: "card-img-top" %>
           <% end %>
           <div class="card-body">
-            <h5 class="card-title"><%= teacher.name %></h5>
+            <h5 class="card-title"><%= link_to teacher.name, user_path(teacher)%></h5>
             <span class="card-text">
               <%= teacher.self_introduction %>
             </span>
@@ -33,5 +35,60 @@
         </div>
       </div>
     <% end %>
+  </div>
+</div>
+<!-- end of middle section -->
+
+<div class="last bg-light p-5 mx-5 text-info">
+  <h3 class="text-center text-info"><strong>It is easy with First Time Free @tech</strong></h3>
+  <div class="card-deck mt-5 text-info">
+    <div class="small_image text-center bg-light card border-0">
+      <%= image_tag ("srch.svg"), class: "card-img-top m-auto"%>
+
+      <div class="card-body">
+        <h5 class="card-title">Search a course</h5>
+        <p class="card-text">Use the search for a course of your choice</p>
+      </div>
+    </div>
+    <div class="small_image text-center bg-light card border-0">
+      <%= image_tag ("select.svg"), class: "card-img-top m-auto"%>
+
+      <div class="card-body">
+        <h5 class="card-title">Select</h5>
+        <p class="card-text">Select a course, see course details!</p>
+      </div>
+    </div>
+    <div class="small_image text-center bg-light card border-0">
+      <%= image_tag ("talk.svg"), class: "card-img-top m-auto"%>
+
+      <div class="card-body">
+        <h5 class="card-title">Contact</h5>
+        <p class="card-text">Talk to the teacher of the course and start learning</p>
+      </div>
+    </div>
+    <div class="small_image text-center bg-light card border-0">
+      <%= image_tag ("learn.svg"), class: "card-img-top m-auto"%>
+
+      <div class="card-body">
+        <h5 class="card-title">Buy a course</h5>
+        <p class="card-text">If you like the way you are working with your teacher. You may buy the course and keep learning!</p>
+      </div>
+    </div>
+  </div>
+  <hr class="text-info">
+  <div class="my-2 text-info  text-center">
+    <h4><strong>Payment made easy with your creadit card!!!</strong></h4>
+    <div class="card-deck text-info">
+      <div class="medium_image text-center bg-light card border-0">
+        <%= image_tag ("visa.png"), class: "card-img-top m-auto"%>
+      </div>
+      <div class="medium_image text-center bg-light card border-0">
+        <%= image_tag ("mastercard.png"), class: "card-img-top m-auto"%>
+      </div>
+      <div class="medium_image text-center bg-light card border-0">
+        <%= image_tag ("UnionPay_logo.svg"), class: "card-img-top m-auto"%>
+      </div>
+
+    </div>
   </div>
 </div>

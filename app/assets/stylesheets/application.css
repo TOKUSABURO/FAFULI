@@ -10,21 +10,44 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+
  *= require_tree .
  *= require_self
  */
  html{
+
    width: 1350px;
+   height: auto;
+
+   width: 100vw;
+
  }
 body{
-  width: 1350px;
+  width: 100%;
   margin: auto;
-  background-color: #fff1e9;
+  background-image: linear-gradient(#fff1e9, skyblue);
+  font-family: Tajawal;
+  height: auto;
 }
 .main-body{
-  width: 1350px;
+  min-height: 100vh;
+  width: 100%;
   margin:0px auto;
   padding: 0px;
+  height: auto;
+}
+.w-45{
+  width: 45%;
+}
+.bg-facebook{
+  background-color: #3b5998;
+}
+
+.bg-twitter{
+  background-color: #00acee;
+}
+.bg-google{
+  background-color: #db4a39;
 }
 .bg-pink{
   background-color: #fff1e9;
@@ -40,6 +63,11 @@ body{
   background-size: cover;
   height: 400px;
 }
+a:hover{
+  background-color: transparent;
+  color: black;
+  text-decoration: none;
+}
 .nav-item a:hover{
   text-decoration: none;
   background-color: transparent;
@@ -53,38 +81,79 @@ body{
   border: 2px solid black;
   background-color: white;
   margin-top: 3rem;
-
-
-}
-.register{
-  width: 80%;
-  margin-left: 4.5rem;
-  padding: 3rem;
 }
 .sign_up_btn{
   background-color: skyblue;
   border-radius: 40px;
-   width: 40%; 
-
+  width: 40%;
   height: 40px;
   color: white;
+}
 
-}
-#login
-{
-background-color: gray;
-}
-h2{
-  text-align: center;
-}
 .navbar-nav li img{
   width: 50px;
   width: 50px;
 }
 .dropdown-menu{
-  margin: -60px;
+  margin: -60px; 
   margin-top: auto;
 }
 .actions{
   margin-left: 8rem;
+}
+.intro{
+  overflow-y: visible;
+}
+.courses{
+  width: 70%;
+}
+.form-group img{
+  width: 200px;
+}
+.small_image img{
+  width: 40px;
+}
+.medium_image img{
+  width: 20 0px;
+}
+.card_comment{
+  max-height: 50vh;
+  overflow-y: scroll;
+}
+
+/* rating styles */
+
+.rating {
+  float:left;
+}
+.rating:not(:checked) > input {
+  position:absolute;
+  top:-9999px;
+  clip:rect(0,0,0,0);
+ }
+.rating:not(:checked) > label {
+  float:right; width:1em; padding:0 .1em;
+  overflow:hidden;
+  white-space:nowrap;
+  cursor:pointer;
+  font-size:200%;
+  line-height:1.2;
+  color:#ddd;
+  text-shadow:1px 1px #bbb, 2px 2px #666, .1em .1em .2em rgba(0,0,0,.5);
+ }
+.rating:not(:checked) > label:before {
+  content: '★ ';
+}
+.rating > input:checked ~ label {
+ color: #f70; text-shadow:1px 1px #c60, 2px 2px #940, .1em .1em .2em rgba(0,0,0,.5);
+ }
+.rating:not(:checked) > label:hover, .rating:not(:checked) > label:hover ~ label {
+  color: gold;
+  text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+}
+.rating > input:checked + label:hover, .rating > input:checked + label:hover ~ label, .rating > input:checked ~ label:hover, .rating > input:checked ~ label:hover ~ label, .rating > label:hover ~ input:checked ~ label {
+  color: #ea0; text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+}
+.rating:not(:checked) > input {
+  display: none;
 }

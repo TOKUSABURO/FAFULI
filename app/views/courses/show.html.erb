@@ -1,42 +1,71 @@
-<p id="notice"><%= notice %></p>
+<div class="container p-4">
+  <div class="card float-left" style="width: 47%;">
+    <div class="card-body">
+      <div class="card-title pr-3 row">
+        <div class="col text-success mr-auto">
+          <h5><strong><%= @course.info_title %></strong></h5>
+          <h6 class="text-warning"><strong><i class="fas fa-star"></i> Stars: <%= @average_rating %></strong></h6>
+        </div>
 
-<p>
-  <strong>Info title:</strong>
-  <%= @course.info_title %>
-</p>
+        <h6><strong><%= link_to 'Visit the teacher', user_path(@course.user), class: "btn btn-success btn-sm shadow-sm text-white" %></strong></h6>
+      </div>
+      <h6><strong>Tought by <%= @course.user.name %></strong></h6>
+      <h6 class="card-subtitle mb-2 text-muted">
+        <strong>Buy:</strong>
+        <%= @course.price %> $
+      </h6><br>
+      <p class="card-text">
+        <strong>Course details:</strong><br>
+        <%= @course.info_details %>
+      </p>
+      <p class="card-text">
+        <strong>Free topics:</strong><br>
+        <%= @course.free_info_topics %>
+      </p>
+      <p class="card-text">
+        <strong>Free topic details:</strong><br>
+        <%= @course.free_info_details %>
+      </p>
 
-<p>
-  <strong>Info details:</strong>
-  <%= @course.info_details %>
-</p>
+  
+      <% if user_signed_in? %>
+        <% if @course.user_id == current_user.id %>
+          <%= link_to 'Edit course information', edit_course_path(@course), class: "btn btn-success" %>
+        <% else %>
+        <%= form_tag charges_path do %>
+          <article>
+            <% if flash[:error].present? %>
+              <div id="error_explanation">
+                <p><%= flash[:error] %></p>
+              </div>
+            <% end %>
+          </article>
+          <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                  data-key="<%= Rails.configuration.stripe[:publishable_key]%>"
+                  data-description="Course's payment"
+                  data-amount= <%= @course.price %>
+                  data-locale="auto"></script>
 
-<p>
-  <strong>Free info topics:</strong>
-  <%= @course.free_info_topics %>
-</p>
+        <% end %>
+        <% end %>
+      <% end %>
 
-<p>
-  <strong>Free info details:</strong>
-  <%= @course.free_info_details %>
-</p>
+    </div>
+  </div>
 
-<p>
-  <strong>Price:</strong>
-  <%= @course.price %>
-</p>
+  <div class="card  float-right" style="width: 50%;">
+    <div class="card-header">
+      <h5 class="text-success">Reviews about the course</h5>
+    </div>
+    <div class="card_comment card-body">
+      <div id="comments_area">
+        <!-- Render to display the posted comment list on the blogs detail page -->
+        <%= render partial: 'comments/index', locals: { comments: @comments, course: @course } %>
+      </div>
 
-<p>List of Comments(Contents below are important)</p>
-
-<!-- Get an HTML id of this comments_area and update only the part of that div -->
-<div id="comments_area">
-  <!-- Render to display the posted comment list on the blogs detail page -->
-  <%= render partial: 'comments/index', locals: { comments: @comments, course: @course } %>
+    </div>
+    <div class="card-footer">
+      <%= render partial: 'comments/form', locals: { comment: @comment, course: @course } %>
+    </div>
+  </div>
 </div>
-
-<!-- Render to display the comment field on the blogs detail page -->
-<%= render partial: 'comments/form', locals: { comment: @comment, course: @course } %>
-
-</div>
-
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>

@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_search
   # GET /courses
   def index
@@ -13,13 +13,19 @@ class CoursesController < ApplicationController
   def show
     @comments = @course.comments
     @comment = @course.comments.build
+    if @course.comments.blank?
+      @average_rating = 0
+    else
+      @average_rating = @course.comments.average(:rating).round(2)
+    end
+
   end
-  
+
 
   # GET /courses/new
   def new
     @course = Course.new
-    
+
   end
 
   # GET /courses/1/edit
@@ -29,7 +35,7 @@ class CoursesController < ApplicationController
   # POST /courses
   def create
     @course = Course.new(course_params)
-
+    @course.user_id = current_user.id
     if @course.save
       redirect_to @course, notice: 'Course was successfully created.'
     else
@@ -63,6 +69,6 @@ class CoursesController < ApplicationController
     end
     # Only allow a trusted parameter "white list" through.
     def course_params
-      params.require(:course).permit(:info_title, :info_details, :free_info_topics, :free_info_details, :price)
+      params.require(:course).permit(:info_title, :info_details, :free_info_topics, :free_info_details, :price )
     end
 end
