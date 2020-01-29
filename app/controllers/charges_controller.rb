@@ -9,7 +9,7 @@ def create
   })
   purchase= Purchase.create(email: current_user.email,card: params[:stripeToken],
   ammount: course.price,description: course.info_title,currency: "usd",
-  user_id: customer.id,course_id: course.id)
+  user_id: customer.id,course_id: course.id, uuid: SecureRandom.uuid)
   purchase.save
 
   redirect_to purchase

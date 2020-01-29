@@ -2,7 +2,7 @@ class PurchasesController < ApplicationController
   before_action :authenticate_user!
 
   def show
-      @purchase=Purchase.find(params[:id])
+      @purchase=Purchase.find_by_uuid(params[:id])
       # @course = Course.find(@purchase.course_id)
   end
 
