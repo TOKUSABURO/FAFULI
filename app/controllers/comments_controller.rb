@@ -1,7 +1,6 @@
 class CommentsController < ApplicationController
   before_action :find_course
   before_action :find_comment, only: [:destroy, :edit , :update]
-
   def index
     comments = Comment.all.order('created_at ASC')
   end
@@ -25,12 +24,7 @@ class CommentsController < ApplicationController
   end
 
   def update
-
-
-    if @comment.update(params[:comment].permit(:content,:rate))
-
     if @comment.update(params[:comment].permit(:rating, :content))
-
     redirect_to course_path(@course)
     else
       render 'edit'
@@ -48,4 +42,4 @@ class CommentsController < ApplicationController
   def comment_params
     params.require(:comment).permit(:content)
   end
-  end
+end
