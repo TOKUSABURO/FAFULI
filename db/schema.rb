@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2020_01_17_072836) do
     t.text "body"
     t.bigint "conversation_id", null: false
     t.bigint "user_id", null: false
-    t.boolean "read"
+    t.boolean "read", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["conversation_id"], name: "index_messages_on_conversation_id"
@@ -56,7 +56,13 @@ ActiveRecord::Schema.define(version: 2020_01_17_072836) do
   end
 
   create_table "purchases", force: :cascade do |t|
+    t.string "email"
     t.integer "ammount"
+    t.string "description"
+    t.string "currency"
+    t.string "card"
+    t.string "user_id"
+    t.string "course_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -85,7 +91,6 @@ ActiveRecord::Schema.define(version: 2020_01_17_072836) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
-    t.string "uid"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

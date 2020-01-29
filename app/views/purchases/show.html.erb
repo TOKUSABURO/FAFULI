@@ -1,9 +1,9 @@
 <p id="notice"><%= notice %></p>
-
+<h1>Payment has successfully completed</h1>
 <p>
-  <strong>Ammount:</strong>
-  <%= @purchase.ammount %>
+  <%= @purchase.inspect %>
 </p>
+
 
 <%= link_to 'Edit', edit_purchase_path(@purchase) %> |
 <%= link_to 'Back', purchases_path %>
