@@ -27,7 +27,7 @@
         <%= @course.free_info_details %>
       </p>
 
-  
+
       <% if user_signed_in? %>
         <% if @course.user_id == current_user.id %>
           <%= link_to 'Edit course information', edit_course_path(@course), class: "btn btn-success" %>
@@ -81,5 +81,3 @@
     path: '/assets/'
   });
 </script>
-
-
