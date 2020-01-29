@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   before_action :find_course
   before_action :find_comment, only: [:destroy, :edit , :update]
-
+  
   def index
     comments = Comment.all.order('created_at ASC')
   end
@@ -48,4 +48,4 @@ class CommentsController < ApplicationController
   def comment_params
     params.require(:comment).permit(:content)
   end
-  end
+end

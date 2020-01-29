@@ -1,21 +1,25 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_search
   # GET /courses
   def index
-    # @courses = Course.all
+
       @q = Course.ransack(params[:q])
-      @courses = @q.result
+      if params[:q]
+        @courses = @q.result
+      else
+        @courses = Course.all
+      end
+
   end
 
   # GET /courses/1
   def show
     @comments = @course.comments
     @comment = @course.comments.build
-    if @course.comments.blank?
-      @average_rating = 0
-    else
+
+    if @course.comments.average(:rating).present?
       @average_rating = @course.comments.average(:rating).round(2)
     end
 

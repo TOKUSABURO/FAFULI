@@ -7,7 +7,12 @@ RSpec.feature "course testing", type: :feature do
       password: "password",
       password_confirmation: "password"
     )
-    @user = User.last
+    @user = User.first
+    visit new_user_session_path
+    fill_in 'email', with: 'aimable@gmail.com'
+    fill_in 'password', with: 'password'
+    click_button 'Log in'
+
     course = Course.create(
       info_title: "ruby",
       info_details: "programming language for web applications",
@@ -18,7 +23,14 @@ RSpec.feature "course testing", type: :feature do
     )
   end
   scenario "course creation is valid with course tittle, details, free topic, free detail and price" do
-    course = Course.last
+
+    course = Course.create(
+      info_title: "java",
+      info_details: "programming language for web applications",
+      free_info_topics: "introduction",
+      free_info_details: "environment installation and basic function",
+      price: 400,
+      user_id: @user.id)
     expect(course).to be_valid
   end
   scenario "It is not valid when one parameter is missing" do
@@ -52,6 +64,8 @@ RSpec.feature "course testing", type: :feature do
   scenario "Test course searching" do
     visit home_index_path
     fill_in 'search', with: 'ruby'
+    click_button 'Search'
+    expect(page).to have_content 'ruby'
   end
 
   scenario "Test if user can view course details" do
@@ -60,5 +74,4 @@ RSpec.feature "course testing", type: :feature do
     expect(page).to have_content "Course details"
     expect(page).to have_content "Free topics"
   end
-
 end

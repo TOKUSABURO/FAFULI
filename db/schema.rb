@@ -10,10 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 0c723a4a1b970aaeff839cac382c49abc393fba7
 ActiveRecord::Schema.define(version: 2020_01_23_180845) do
 
   # These are extensions that must be enabled in order to support this database
@@ -73,6 +70,23 @@ ActiveRecord::Schema.define(version: 2020_01_23_180845) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_identities_on_user_id"
 
+  end
+
+  create_table "identities", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "provider"
+    t.string "accesstoken"
+    t.string "refreshtoken"
+    t.string "uid"
+    t.string "name"
+    t.string "email"
+    t.string "nickname"
+    t.string "image"
+    t.string "phone"
+    t.string "urls"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_identities_on_user_id"
   end
 
   create_table "identities", force: :cascade do |t|
@@ -166,15 +180,8 @@ ActiveRecord::Schema.define(version: 2020_01_23_180845) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
-<<<<<<< HEAD
     t.string "uid", limit: 500, default: "", null: false
     t.string "provider"
-=======
-
-    t.string "uid", limit: 500, default: "", null: false
-    t.string "provider", limit: 50, default: "", null: false
-]
->>>>>>> 0c723a4a1b970aaeff839cac382c49abc393fba7
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
