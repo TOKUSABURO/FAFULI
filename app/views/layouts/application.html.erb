@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>StFirstTimeFree</title>
+    <%= favicon_link_tag 'first.png' %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -19,7 +20,7 @@
       <a class="navbar-brand text-pink" href="#"><h2>First Time Free @Tech</h2></a>
 
       <%= search_form_for @q do |f| %>
-        <%= f.search_field :info_title_or_info_details_cont, class: "form-control mr-sm-2 rounded-pill", placeholder: "Search course" %>
+        <%= f.search_field :info_title_or_info_details_cont, class: "form-control mr-sm-2 rounded-pill", placeholder: "Search course", name: "search" %>
       <% end %>
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,13 +39,14 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
               <strong class="text-dark"><%= current_user.name %></strong>
+
               <% if current_user.profile_image.url %>
                 <%= image_tag current_user.profile_image.url, class: "rounded shadow" %>
               <% else %>
                 <%= image_tag "user_icon.png", class: "rounded-full shadow" %>
               <% end %>
-
             </a>
+            0726068310
       <div class="dropdown-menu p-2" aria-labelledby="navbarDropdown">
         <a class="dropdown-item" href="#">
           <%= link_to 'My Profile', user_path(current_user) %>
@@ -60,6 +62,7 @@
 
           <% else %>
             <li class="px-4">
+            
               <%= link_to 'Login', new_user_session_path, class: "btn btn-info text-white px-4 shadow" %>
             </li>
 
@@ -68,7 +71,9 @@
       </div>
     </nav>
 <!-- end of navigation bar -->
+
     <div class="main-body overflow-auto mb-2">
+
       <%= yield %>
 
     </div>
@@ -78,7 +83,7 @@
       <div class="row text-pink bg-dark w-75 mt-2">
 
         <div class="col border-right border-light px-5">
-          <strong><a class="text-pink" href="#">About us</a><br></strong>
+          <strong><a class="text-pink" <%= link_to 'About Us', about_us_path, class: "text_pink" %></a><br></strong>
           <strong><a class="text-pink" href="#">How it works</a><br></strong>
           <strong><a class="text-pink" href="#">Notice</a></strong>
         </div>

@@ -13,7 +13,12 @@ class CoursesController < ApplicationController
   def show
     @comments = @course.comments
     @comment = @course.comments.build
-    
+    if @course.comments.blank?
+      @average_rating = 0
+    else
+      @average_rating = @course.comments.average(:rating).round(2)
+    end
+
   end
 
 
@@ -26,6 +31,11 @@ class CoursesController < ApplicationController
   # GET /courses/1/edit
   def edit
   end
+  def contact_us
+     @courses = Course.all
+
+  end
+
 
   # POST /courses
   def create

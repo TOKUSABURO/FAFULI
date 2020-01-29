@@ -1,8 +1,9 @@
 <div class="head">
   <!-- header -->
   <div class="ml-auto text-right p-5 w-50 text-pink">
-    <h1 class="text-right">Please consult and ask</h1> <br>
-    <h3>First free! provides an opportunity <br> to be assured</h3>
+    <h1 class="text-right"><%= t('home.index.first') %> </h1> <br>
+    <h3><%= t('home.index.second') %>  <br> <%= t('home.index.third') %> </h3>
+    
     <% if user_signed_in? %>
       <% if current_user.user_type == 'Teacher' %>
         <%= link_to 'Register course', new_course_path, class: "btn btn-info px-4 text-white btn-lg" %>
