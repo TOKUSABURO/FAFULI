@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'steps/index'
   get 'about_us/index'
 
   resources :courses

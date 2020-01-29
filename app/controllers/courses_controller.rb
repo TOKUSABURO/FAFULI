@@ -4,7 +4,6 @@ class CoursesController < ApplicationController
   before_action :set_search
   # GET /courses
   def index
-
       @q = Course.ransack(params[:q])
       if params[:q]
         @courses = @q.result
@@ -18,7 +17,6 @@ class CoursesController < ApplicationController
   def show
     @comments = @course.comments
     @comment = @course.comments.build
-
     if @course.comments.average(:rating).present?
       @average_rating = @course.comments.average(:rating).round(2)
     end
