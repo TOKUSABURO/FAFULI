@@ -36,7 +36,7 @@
   <h6>OR</h6>
   <%- if devise_mapping.omniauthable? %>
     <%- resource_class.omniauth_providers.each do |provider| %>
-      <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), class: "btn bg-google w-75 rounded-pill text-white" %><br />
+      <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), class: "btn bg-google w-75 rounded-pill" %><br />
     <% end %>
   <% end %>
 

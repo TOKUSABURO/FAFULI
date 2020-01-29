@@ -23,6 +23,7 @@ RSpec.feature "course testing", type: :feature do
     )
   end
   scenario "course creation is valid with course tittle, details, free topic, free detail and price" do
+
     course = Course.create(
       info_title: "java",
       info_details: "programming language for web applications",
