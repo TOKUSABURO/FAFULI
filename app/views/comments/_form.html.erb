@@ -1,5 +1,18 @@
-<%= form_for ([@course, @course.comments.build]) do |f| %>
-  <%= f.text_area :content, class:"single-input form-control mb-2", placeholder:"enter comment"%>
-  <%= f.submit "send comment", class: "btn btn-light btn-sm shadow-sm border"%>
 
-    <%end%>
+<% if user_signed_in? %>
+  <%= form_for ([@course, @course.comments.build]) do |f| %>
+
+    <fieldset class="rating">
+      <strong>Rate this course</strong><br>
+      <%=f.radio_button :rating, 5, :id => "star5" %><label for="star5" title="Excellent!">5 Stars</label>
+      <%=f.radio_button :rating, 4, :id => "star4" %><label for="star4" title="Good!">4 Stars</label>
+      <%=f.radio_button :rating, 3, :id => "star3" %><label for="star3" title="Average!">3 Stars</label>
+      <%=f.radio_button :rating, 2, :id => "star2" %><label for="star2" title="Poor!">2 Stars</label>
+      <%=f.radio_button :rating, 1, :id => "star1" %><label for="star1" title="Very Poor!">1 Stars</label>
+    </fieldset>
+    <%= f.text_area :content, class:"single-input form-control mb-2", placeholder:"enter comment"%>
+    <%= f.submit "Add review", class: "btn btn-secondary btn-sm shadow-sm border"%>
+  <%end%>
+<% else %>
+  <strong><%= link_to "Sign in to add comment", new_user_session_path, class:"text-success" %></strong>
+<% end %>
