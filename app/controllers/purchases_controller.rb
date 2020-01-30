@@ -1,14 +1,10 @@
 class PurchasesController < ApplicationController
   before_action :set_purchase, only: [:show, :edit, :update, :destroy]
 
-  # GET /purchases
-  # GET /purchases.json
   def index
     @purchases = Purchase.all
   end
 
-  # GET /purchases/1
-  # GET /purchases/1.json
   def show
   end
 
@@ -21,8 +17,7 @@ class PurchasesController < ApplicationController
   def edit
   end
 
-  # POST /purchases
-  # POST /purchases.json
+ 
   def create
     @purchase = Purchase.new(purchase_params)
 
