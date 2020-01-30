@@ -20,7 +20,7 @@
       <div class="logo">
         <a class="navbar-brand text-pink" href="#"><%= image_tag "logo.png"%></a>
       </div>
-      <div class="form-inline">
+      <div class="form-inline w-50">
         <%= search_form_for @q do |f| %>
           <%= f.search_field :info_title_or_info_details_cont, class: "form-control mr-sm-2 rounded-pill", placeholder: "Search course", name: "search" %>
           <%= f.submit "Search", class: "btn btn-info  btn-sm shadow-sm" %>
@@ -87,7 +87,7 @@
         <div class="col border-right border-light px-5">
           <strong><%= link_to 'About Us', about_us_path, class: "text-white" %><br></strong>
           <strong><%= link_to 'How it works', steps_index_path, class: "text-white" %><br></strong>
-          
+
         </div>
         <div class="col border-right border-light">
           <strong><a class="text-pink" href="#"><i class="fab fa-facebook"></i> Facebook</a><br></strong>
