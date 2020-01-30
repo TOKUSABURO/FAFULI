@@ -1,9 +1,27 @@
-<p id="notice"><%= notice %></p>
-<h1>Payment has successfully completed</h1>
-<p>
-  <%= @purchase.inspect %>
+<p><strong>Email:
+  <%= @purchase.email %></strong>
 </p>
-
-
-<%= link_to 'Edit', edit_purchase_path(@purchase) %> |
-<%= link_to 'Back', purchases_path %>
+<p><strong>Amount:
+  <%= @purchase.ammount %></strong>
+</p>
+<p><strong>description:
+  <%= @purchase.description %></strong>
+</p>
+<p><strong>Currency:
+  <%= @purchase.currency %></strong>
+</p>
+<p><strong>card:
+  <%= @purchase.card %></strong>
+</p>
+<p><strong>Customer_ID:
+  <%= @purchase.user_id %></strong>
+</p>
+<p><strong>course_id:
+  <%= @purchase.course_id %></strong>
+</p>
+<p><strong>created_at":
+  <%= @purchase.created_at %></strong>
+</p>
+<p><strong>updated_at":
+  <%= @purchase.updated_at %></strong>
+</p>
