@@ -1,46 +1,4 @@
-<div class="head">
-  <!-- header -->
-  <div class="ml-auto text-right p-5 w-50 text-pink">
-    <h1 class="text-right"><%= t('home.index.first') %> </h1> <br>
-    <h3><%= t('home.index.second') %>  <br> <%= t('home.index.third') %> </h3>
-
-    <% if user_signed_in? %>
-      <% if current_user.user_type == 'Teacher' %>
-        <%= link_to 'Register course', new_course_path, class: "btn btn-info px-4 text-white btn-lg" %>
-      <% end %>
-    <% else %>
-      <%= link_to 'Get started', new_user_registration_path, class: "btn btn-info px-4 text-white btn-lg" %>
-    <% end %>
-  </div>
-</div>
-<!-- end of header division -->
-
-<!-- middle section -->
-<div class="my-4 text-center mx-5">
-  <h4>You can choose a best tutor to work with!!</h4>
-    <div class="row row-cols-1 row-cols-md-6">
-    <% @teachers.each do |teacher| %>
-      <div class="col mb-4">
-        <div class="card h-100 shadow-sm">
-          <% if teacher.profile_image.url %>
-            <%= image_tag teacher.profile_image.url, class: "card-img-top" %>
-          <% else %>
-            <%= image_tag "user_icon.png", class: "card-img-top" %>
-          <% end %>
-          <div class="card-body">
-            <h5 class="card-title"><%= link_to teacher.name, user_path(teacher)%></h5>
-            <span class="card-text">
-              <%= teacher.self_introduction %>
-            </span>
-          </div>
-        </div>
-      </div>
-    <% end %>
-  </div>
-</div>
-<!-- end of middle section -->
-
-<div class="last bg-light p-5 mx-5 text-info">
+<div class="last bg-light mt-4 shadow p-5 mx-5 text-info">
   <h3 class="text-center text-info"><strong>It is easy with First Time Free @tech</strong></h3>
   <div class="card-deck mt-5 text-info">
     <div class="small_image text-center bg-light card border-0">

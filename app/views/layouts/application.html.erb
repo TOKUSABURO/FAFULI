@@ -17,12 +17,15 @@
   <body>
 <!-- navigation bar -->
     <nav class="navbar navbar-expand-lg navbar-light text-pink bg-light sticky-top shadow ">
-      <a class="navbar-brand text-pink" href="#"><h2>First Time Free @Tech</h2></a>
-
-      <%= search_form_for @q do |f| %>
-        <%= f.search_field :info_title_or_info_details_cont, class: "form-control mr-sm-2 rounded-pill", placeholder: "Search course", name: "search" %>
-      <% end %>
-
+      <div class="logo">
+        <a class="navbar-brand text-pink" href="#"><%= image_tag "logo.png"%></a>
+      </div>
+      <div class="form-inline w-50">
+        <%= search_form_for @q do |f| %>
+          <%= f.search_field :info_title_or_info_details_cont, class: "form-control mr-sm-2 rounded-pill", placeholder: "Search course", name: "search" %>
+          <%= f.submit "Search", class: "btn btn-info  btn-sm shadow-sm" %>
+        <% end %>
+      </div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
       </button>
@@ -62,7 +65,6 @@
 
           <% else %>
             <li class="px-4">
-            
               <%= link_to 'Login', new_user_session_path, class: "btn btn-info text-white px-4 shadow" %>
             </li>
 
@@ -80,13 +82,13 @@
     </div>
 
     <div class="card-footer text-pink bg-dark p-4 sticky-bottom">
-      <h2 class="text-left ">First Time Free @Tech</h2>
+      <%= image_tag "logo.png"%>
       <div class="row text-pink bg-dark w-75 mt-2">
 
         <div class="col border-right border-light px-5">
-          <strong><a class="text-pink" <%= link_to 'About Us', about_us_path, class: "text_pink" %></a><br></strong>
-          <strong><a class="text-pink" href="#">How it works</a><br></strong>
-          <strong><a class="text-pink" href="#">Notice</a></strong>
+          <strong><%= link_to 'About Us', about_us_path, class: "text-white" %><br></strong>
+          <strong><%= link_to 'How it works', steps_index_path, class: "text-white" %><br></strong>
+
         </div>
         <div class="col border-right border-light">
           <strong><a class="text-pink" href="#"><i class="fab fa-facebook"></i> Facebook</a><br></strong>
