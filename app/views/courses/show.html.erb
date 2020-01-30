@@ -1,9 +1,15 @@
 <div class="container p-4">
   <div class="card float-left" style="width: 47%;">
     <div class="card-body">
-      <h5 class="card-title">
-        <strong class="mr-auto"><%= @course.info_title %></strong>
-      </h5>
+      <div class="card-title pr-3 row">
+        <div class="col text-success mr-auto">
+          <h5><strong><%= @course.info_title %></strong></h5>
+          <h6 class="text-warning"><strong><i class="fas fa-star"></i> Stars: <%= @average_rating %></strong></h6>
+        </div>
+
+        <h6><strong><%= link_to 'Visit the teacher', user_path(@course.user), class: "btn btn-success btn-sm shadow-sm text-white" %></strong></h6>
+      </div>
+      <h6><strong>Tought by <%= @course.user.name %></strong></h6>
       <h6 class="card-subtitle mb-2 text-muted">
         <strong>Buy:</strong>
         <%= @course.price %> $
@@ -20,41 +26,64 @@
         <strong>Free topic details:</strong><br>
         <%= @course.free_info_details %>
       </p>
+
+
       <% if user_signed_in? %>
         <% if @course.user_id == current_user.id %>
           <%= link_to 'Edit course information', edit_course_path(@course), class: "btn btn-success" %>
-        <% else %>
-        <%= form_tag charges_path do %>
-          <article>
-            <% if flash[:error].present? %>
-              <div id="error_explanation">
-                <p><%= flash[:error] %></p>
-              </div>
-            <% end %>
-          </article>
-          <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                  data-key="<%= Rails.configuration.stripe[:publishable_key]%>"
-                  data-description="Course's payment"
-                  data-amount= <%= @course.price %>
-                  data-locale="auto"></script>
-                  
-        <% end %>
         <% end %>
       <% end %>
-      
+
     </div>
   </div>
 
-  <div class="card float-right" style="width: 50%;">
+  <div class="card  float-right" style="width: 50%;">
     <div class="card-header">
       <h5 class="text-success">Reviews about the course</h5>
     </div>
-    <div class="card-body">
+    <div class="card_comment card-body">
       <div id="comments_area">
         <!-- Render to display the posted comment list on the blogs detail page -->
         <%= render partial: 'comments/index', locals: { comments: @comments, course: @course } %>
       </div>
+
+    </div>
+    <div class="card-footer">
       <%= render partial: 'comments/form', locals: { comment: @comment, course: @course } %>
     </div>
   </div>
 </div>
+
+<%= form_tag charges_path, id:'chargeForm' do %>
+  <% if flash[:error].present? %>
+    <div id="error_explanation">
+      <p><%= flash[:error] %></p>
+    </div>
+  <% end %>
+
+  <script src="https://checkout.stripe.com/checkout.js"></script>
+  <%= hidden_field_tag 'stripeToken'%>
+  <%= hidden_field_tag 'amount', @course.price * 100 %>
+  <%= hidden_field_tag 'stripeEmail',current_user.email%>
+  <%= hidden_field_tag 'course_id', @course.id %>
+  <button id="btn-buy">Pay</button>
+
+  <script>
+    var handler = StripeCheckout.configure({
+    key: '<%= Rails.configuration.stripe[:publishable_key]%>',
+    token: function(token, arg){
+    document.getElementById("stripeToken").value=token.id;
+    document.getElementById("stripeEmail").value=token.email;
+    document.getElementById("chargeForm").submit();
+      }
+    });
+    document.getElementById("btn-buy").addEventListener('click',function(e){
+    handler.open({
+    name: '<%= @course.info_title %> ',
+    description: 'buy this course for ($<%= @course.price %>)',
+    amount: document.getElementById("amount").value 
+    });
+    e.preventDefault();
+    })
+  </script>
+<% end %>

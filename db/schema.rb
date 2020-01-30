@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_20_075425) do
+ActiveRecord::Schema.define(version: 2020_01_29_121150) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2020_01_20_075425) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "course_id", null: false
     t.bigint "user_id", null: false
+    t.integer "rating"
     t.index ["course_id"], name: "index_comments_on_course_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
@@ -44,6 +45,23 @@ ActiveRecord::Schema.define(version: 2020_01_20_075425) do
     t.index ["user_id"], name: "index_courses_on_user_id"
   end
 
+  create_table "identities", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "provider"
+    t.string "accesstoken"
+    t.string "refreshtoken"
+    t.string "uid"
+    t.string "name"
+    t.string "email"
+    t.string "nickname"
+    t.string "image"
+    t.string "phone"
+    t.string "urls"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_identities_on_user_id"
+  end
+
   create_table "messages", force: :cascade do |t|
     t.text "body"
     t.bigint "conversation_id", null: false
@@ -56,9 +74,16 @@ ActiveRecord::Schema.define(version: 2020_01_20_075425) do
   end
 
   create_table "purchases", force: :cascade do |t|
+    t.string "email"
     t.integer "ammount"
+    t.string "description"
+    t.string "currency"
+    t.string "card"
+    t.string "user_id"
+    t.string "course_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "uuid"
   end
 
   create_table "users", force: :cascade do |t|
@@ -94,6 +119,7 @@ ActiveRecord::Schema.define(version: 2020_01_20_075425) do
   add_foreign_key "comments", "courses"
   add_foreign_key "comments", "users"
   add_foreign_key "courses", "users"
+  add_foreign_key "identities", "users"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
 end

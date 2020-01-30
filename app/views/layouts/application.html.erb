@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>StFirstTimeFree</title>
+    <%= favicon_link_tag 'first.png' %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -9,17 +10,22 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://kit.fontawesome.com/472ee2df72.js" crossorigin="anonymous"></script>
+
+
   </head>
 
   <body>
 <!-- navigation bar -->
     <nav class="navbar navbar-expand-lg navbar-light text-pink bg-light sticky-top shadow ">
-      <a class="navbar-brand text-pink" href="#"><h2>First Time Free @Tech</h2></a>
-
-      <%= search_form_for @q do |f| %>
-        <%= f.search_field :info_title_or_info_details_cont, class: "form-control mr-sm-2 rounded-pill", placeholder: "Search course" %>
-      <% end %>
-
+      <div class="logo">
+        <a class="navbar-brand text-pink" href="#"><%= image_tag "logo.png"%></a>
+      </div>
+      <div class="form-inline w-50">
+        <%= search_form_for @q do |f| %>
+          <%= f.search_field :info_title_or_info_details_cont, class: "form-control mr-sm-2 rounded-pill", placeholder: "Search course", name: "search" %>
+          <%= f.submit "Search", class: "btn btn-info  btn-sm shadow-sm" %>
+        <% end %>
+      </div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
       </button>
@@ -30,26 +36,27 @@
             <%= link_to 'Home', home_index_path, class: "nav-link" %>
           </li>
           <li class="nav-item my-auto px-4 border-right">
-            <%= link_to 'Course', courses_url, class: "nav-link" %>
+            <%= link_to 'Courses', courses_url, class: "nav-link" %>
           </li>
           <% if user_signed_in? %>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
               <strong class="text-dark"><%= current_user.name %></strong>
+
               <% if current_user.profile_image.url %>
                 <%= image_tag current_user.profile_image.url, class: "rounded shadow" %>
               <% else %>
-                <%= image_tag "user_icon.png", class: "rounded shadow" %>
+                <%= image_tag "user_icon.png", class: "rounded-full shadow" %>
               <% end %>
-
             </a>
+            0726068310
       <div class="dropdown-menu p-2" aria-labelledby="navbarDropdown">
         <a class="dropdown-item" href="#">
           <%= link_to 'My Profile', user_path(current_user) %>
         </a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="#">
-          <%= link_to 'Change account', edit_user_registration_path %>
+          <%= link_to 'Edit account', edit_user_registration_path %>
         </a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="#"><%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "btn btn-outline-danger text-danger btn-sm text-white px-4 shadow" %></a>
@@ -66,24 +73,26 @@
       </div>
     </nav>
 <!-- end of navigation bar -->
-    <div class="main-body">
+
+    <div class="main-body overflow-auto mb-2">
+
       <%= yield %>
 
     </div>
 
     <div class="card-footer text-pink bg-dark p-4 sticky-bottom">
-      <h2 class="text-left ">First Time Free @Tech</h2>
+      <%= image_tag "logo.png"%>
       <div class="row text-pink bg-dark w-75 mt-2">
 
         <div class="col border-right border-light px-5">
-          <strong><a class="text-pink" href="#">About us</a><br></strong>
-          <strong><a class="text-pink" href="#">How it works</a><br></strong>
-          <strong><a class="text-pink" href="#">Notice</a></strong>
+          <strong><%= link_to 'About Us', about_us_path, class: "text-white" %><br></strong>
+          <strong><%= link_to 'How it works', steps_index_path, class: "text-white" %><br></strong>
+
         </div>
         <div class="col border-right border-light">
           <strong><a class="text-pink" href="#"><i class="fab fa-facebook"></i> Facebook</a><br></strong>
           <strong><a class="text-pink" href="#"><i class="fab fa-twitter"></i> Twitter</a><br></strong>
-          <strong><a class="text-pink" href="#">Google</a></strong>
+          <strong><a class="text-pink" href="#"><i class="fab fa-google"></i> Google</a></strong>
         </div>
         <div class="col">
           <h5>Contact us</h5>

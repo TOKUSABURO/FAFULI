@@ -4,12 +4,12 @@
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="field">
 
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" ,placeholder:"Email", class: "form-control w-75 m-auto" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" ,placeholder:"Email", class: "form-control w-75 m-auto", name: "email" %>
     </div>
 
     <div class="field">
 
-      <%= f.password_field :password, autocomplete: "current-password" ,placeholder:"Password", class: "form-control w-75 m-auto" %>
+      <%= f.password_field :password, autocomplete: "current-password" ,placeholder:"Password", class: "form-control w-75 m-auto", name: "password" %>
     </div>
 
     <% if devise_mapping.rememberable? %>
@@ -36,7 +36,7 @@
   <h6>OR</h6>
   <%- if devise_mapping.omniauthable? %>
     <%- resource_class.omniauth_providers.each do |provider| %>
-      <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), class: "btn bg-google w-75 rounded-pill text-white" %><br />
+      <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), class: "btn bg-google w-75 rounded-pill" %><br />
     <% end %>
   <% end %>
 
