@@ -11,10 +11,10 @@
 
       <div class="form-row form-group">
         <div class="col">
-          <%= f.text_field :name, autofocus: true, autocomplete: "user name" ,placeholder:"Full Name",class: "form-control", name:"name"%>
+          <%= f.text_field :name, autofocus: true, autocomplete: "user name" ,placeholder:"Full Name",class: "form-control"%>
         </div>
         <div class="col">
-          <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder:"Email",class: "form-control", name:"email" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder:"Email",class: "form-control" %>
         </div>
       </div>
 
@@ -40,10 +40,10 @@
 
         <div class="form-row form-group">
           <div class="col">
-            <%= f.password_field :password, autocomplete: "new-password",placeholder:"password (Minimum 6 characters)",class: "form-control", name:"password" %>
+            <%= f.password_field :password, autocomplete: "new-password",placeholder:"password (Minimum 6 characters)",class: "form-control" %>
           </div>
           <div class="col">
-            <%= f.password_field :password_confirmation, autocomplete: "new-password",placeholder:"password_confirmation",class: "form-control", name:"password_confirmation" %>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password",placeholder:"password_confirmation",class: "form-control" %>
           </div>
         </div>
       <div class="border rounded p-2 mt-4">
@@ -70,7 +70,13 @@
         <%= f.submit "Sign up",class:"btn btn-info w-25 rounded-pill m-auto"%>
       </div>
     <% end %>
-    Already have account?
-    <%= render "devise/shared/links" %>
+    Already have account? <%= link_to "Log in", new_session_path(resource_name), class:"text-info" %> </br>
+    <div class="text-center">
+      <%- if devise_mapping.omniauthable? %>
+        <%= link_to "Sign in with google", user_google_omniauth_authorize_path, class: "btn bg-google mb-2 w-75 text-white rounded-pill" %><br />
+        <%= link_to "Sign in with facebook", user_facebook_omniauth_authorize_path, class: "btn bg-facebook mb-2 w-75 text-white rounded-pill" %><br />
+        <%= link_to "Sign in with github", user_github_omniauth_authorize_path, class: "btn bg-github mb-2 w-75 text-white rounded-pill" %><br />
+      <% end %>
+    </div>
   </div>
 </div>
