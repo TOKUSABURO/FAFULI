@@ -31,6 +31,40 @@
       <% if user_signed_in? %>
         <% if @course.user_id == current_user.id %>
           <%= link_to 'Edit course information', edit_course_path(@course), class: "btn btn-success" %>
+        <% else %>
+        <%= form_tag charges_path, id:'chargeForm' do %>
+          <% if flash[:error].present? %>
+            <div id="error_explanation">
+              <p><%= flash[:error] %></p>
+            </div>
+          <% end %>
+        
+          <script src="https://checkout.stripe.com/checkout.js"></script>
+          <%= hidden_field_tag 'stripeToken'%>
+          <%= hidden_field_tag 'amount', @course.price * 100 %>
+          <%= hidden_field_tag 'stripeEmail',current_user.email%>
+          <%= hidden_field_tag 'course_id', @course.id %>
+          <button id="btn-buy" class="btn btn-info px-4 shadow "><strong>Pay with card</strong></button>
+        
+          <script>
+            var handler = StripeCheckout.configure({
+            key: '<%= Rails.configuration.stripe[:publishable_key]%>',
+            token: function(token, arg){
+            document.getElementById("stripeToken").value=token.id;
+            document.getElementById("stripeEmail").value=token.email;
+            document.getElementById("chargeForm").submit();
+              }
+            });
+            document.getElementById("btn-buy").addEventListener('click',function(e){
+            handler.open({
+            name: '<%= @course.info_title %> ',
+            description: 'buy this course for ($<%= @course.price %>)',
+            amount: document.getElementById("amount").value 
+            });
+            e.preventDefault();
+            })
+          </script>
+        <% end %>
         <% end %>
       <% end %>
 
@@ -54,36 +88,3 @@
   </div>
 </div>
 
-<%= form_tag charges_path, id:'chargeForm' do %>
-  <% if flash[:error].present? %>
-    <div id="error_explanation">
-      <p><%= flash[:error] %></p>
-    </div>
-  <% end %>
-
-  <script src="https://checkout.stripe.com/checkout.js"></script>
-  <%= hidden_field_tag 'stripeToken'%>
-  <%= hidden_field_tag 'amount', @course.price * 100 %>
-  <%= hidden_field_tag 'stripeEmail',current_user.email%>
-  <%= hidden_field_tag 'course_id', @course.id %>
-  <button id="btn-buy">Pay</button>
-
-  <script>
-    var handler = StripeCheckout.configure({
-    key: '<%= Rails.configuration.stripe[:publishable_key]%>',
-    token: function(token, arg){
-    document.getElementById("stripeToken").value=token.id;
-    document.getElementById("stripeEmail").value=token.email;
-    document.getElementById("chargeForm").submit();
-      }
-    });
-    document.getElementById("btn-buy").addEventListener('click',function(e){
-    handler.open({
-    name: '<%= @course.info_title %> ',
-    description: 'buy this course for ($<%= @course.price %>)',
-    amount: document.getElementById("amount").value 
-    });
-    e.preventDefault();
-    })
-  </script>
-<% end %>
