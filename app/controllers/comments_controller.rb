@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   before_action :find_course
   before_action :find_comment, only: [:destroy, :edit , :update]
-
+  before_action :authenticate_user!, only: [:create, :edit, :update ]
   def index
     comments = Comment.all.order('created_at ASC')
   end

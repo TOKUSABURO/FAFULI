@@ -1,5 +1,4 @@
 
-<% if user_signed_in? %>
   <%= form_for ([@course, @course.comments.build]) do |f| %>
 
     <fieldset class="rating">
@@ -13,6 +12,3 @@
     <%= f.text_area :content, class:"single-input form-control mb-2", placeholder:"enter comment"%>
     <%= f.submit "Add review", class: "btn btn-secondary btn-sm shadow-sm border"%>
   <%end%>
-<% else %>
-  <strong><%= link_to "Sign in to add comment", new_user_session_path, class:"text-success" %></strong>
-<% end %>

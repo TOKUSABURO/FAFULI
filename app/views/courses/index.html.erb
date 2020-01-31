@@ -5,7 +5,7 @@
   <h4>Learn A programming skill of your choice!!</h4>
 </div>
 <div class="mx-auto" style="width: 70%">
-  <% if user_signed_in? %>
+  <% if user_signed_in? && current_user.user_type == "Teacher" %>
     <h4><%= link_to 'New Course', new_course_path, class: "text-info" %></h4>
   <% end %>
 </div>

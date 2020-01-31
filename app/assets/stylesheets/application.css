@@ -70,9 +70,12 @@ body{
   background-color: #543864;
 }
 .head{
-  background-image: url('bg-head.jpg');
+  background-image: url('cover.jpg');
   background-size: cover;
-  height: 400px;
+  height: 600px;
+}
+.head h1 h3{
+  font-size: 40px;
 }
 a:hover{
   background-color: transparent;
@@ -170,4 +173,8 @@ a:hover{
 }
 .logo img{
   width: 100px;
+}
+.most-followed{
+  font-weight: bold;
+
 }
