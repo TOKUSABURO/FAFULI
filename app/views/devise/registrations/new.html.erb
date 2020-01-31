@@ -25,7 +25,8 @@
         </div>
         <div class="field">
           <%= f.label :user_type %>
-          <%= f.select :user_type, [ 'Teacher', 'Learner']%>
+          <%= f.select :user_type, [ 'Teacher', 'Learner'], onchange: "yesnoCheck(this);", value: 'Teacher' %>
+         
         </div>
       </div>
 
@@ -80,3 +81,4 @@
     </div>
   </div>
 </div>
+

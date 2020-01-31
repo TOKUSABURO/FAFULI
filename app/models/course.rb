@@ -3,4 +3,5 @@ class Course < ApplicationRecord
     validates :info_title, :info_details, :free_info_topics, :free_info_details,  presence: true
     validates :price, presence:true
     belongs_to :user
+    has_many :purchases 
 end

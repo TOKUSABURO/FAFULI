@@ -38,13 +38,13 @@
               <p><%= flash[:error] %></p>
             </div>
           <% end %>
-        
           <script src="https://checkout.stripe.com/checkout.js"></script>
           <%= hidden_field_tag 'stripeToken'%>
           <%= hidden_field_tag 'amount', @course.price * 100 %>
           <%= hidden_field_tag 'stripeEmail',current_user.email%>
           <%= hidden_field_tag 'course_id', @course.id %>
-          <button id="btn-buy" class="btn btn-info px-4 shadow "><strong>Pay with card</strong></button>
+          
+          <button id="btn-buy" class="btn btn-info px-4 shadow "><strong>Pay with card</button>
         
           <script>
             var handler = StripeCheckout.configure({

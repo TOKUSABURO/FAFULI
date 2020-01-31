@@ -1,7 +1,6 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_search
   # GET /courses
   def index
       @q = Course.ransack(params[:q])
@@ -10,14 +9,11 @@ class CoursesController < ApplicationController
       else
         @courses = Course.all
       end
-
   end
-
   # GET /courses/1
   def show
     @comments = @course.comments
     @comment = @course.comments.build
-    @purchases=Purchase.all
     if @course.comments.average(:rating).present?
       @average_rating = @course.comments.average(:rating).round(2)
     end
@@ -77,5 +73,11 @@ class CoursesController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def course_params
       params.require(:course).permit(:info_title, :info_details, :free_info_topics, :free_info_details, :price )
+    end
+
+    def only_teacher_can_create_course
+      if current_user && current_user.user_type == "Teacher"
+        redirect_to courses_path, notice: 'You can not create course since you are learner'
+      end
     end
 end
