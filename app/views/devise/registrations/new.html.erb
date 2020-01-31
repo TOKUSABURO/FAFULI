@@ -70,7 +70,13 @@
         <%= f.submit "Sign up",class:"btn btn-info w-25 rounded-pill m-auto"%>
       </div>
     <% end %>
-    Already have account?
-    <%= render "devise/shared/links" %>
+    Already have account? <%= link_to "Log in", new_session_path(resource_name), class:"text-info" %> </br>
+    <div class="text-center">
+      <%- if devise_mapping.omniauthable? %>
+        <%= link_to "Sign in with google", user_google_omniauth_authorize_path, class: "btn bg-google mb-2 w-75 text-white rounded-pill" %><br />
+        <%= link_to "Sign in with facebook", user_facebook_omniauth_authorize_path, class: "btn bg-facebook mb-2 w-75 text-white rounded-pill" %><br />
+        <%= link_to "Sign in with github", user_github_omniauth_authorize_path, class: "btn bg-github mb-2 w-75 text-white rounded-pill" %><br />
+      <% end %>
+    </div>
   </div>
 </div>

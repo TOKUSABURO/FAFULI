@@ -41,12 +41,24 @@ body{
 .bg-facebook{
   background-color: #3b5998;
 }
+.bg-facebook:hover{
+  background-color: #22335a;
+}
+.bg-github{
+  background-color: #27c53c;
+}
+.bg-github:hover{
+  background-color: #30a13f;
+}
 
 .bg-twitter{
   background-color: #00acee;
 }
 .bg-google{
   background-color: #db4a39;
+}
+.bg-google:hover{
+  background-color: #863128;
 }
 .bg-pink{
   background-color: #fff1e9;

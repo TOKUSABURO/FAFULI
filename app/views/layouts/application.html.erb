@@ -40,8 +40,9 @@
             <%= link_to 'Courses', courses_url, class: "nav-link" %>
           </li>
           <% if user_signed_in? %>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          
+          <li class="nav-item pl-4">
+            <%= link_to user_path(current_user) do %>
               <strong class="text-dark"><%= current_user.name %></strong>
 
               <% if current_user.profile_image.url %>
@@ -49,20 +50,11 @@
               <% else %>
                 <%= image_tag "user_icon.png", class: "rounded-full shadow" %>
               <% end %>
-            </a>
-            0726068310
-      <div class="dropdown-menu p-2" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" href="#">
-          <%= link_to 'My Profile', user_path(current_user) %>
-        </a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">
-          <%= link_to 'Edit account', edit_user_registration_path %>
-        </a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#"><%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "btn btn-outline-danger text-danger btn-sm text-white px-4 shadow" %></a>
-      </div>
-    </li>
+            <% end %> 
+          </li>
+          <li class="nav-item my-auto pl-4">
+          <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "btn btn-outline-danger text-danger btn-sm text-white shadow nav-link" %>
+          </li>
 
           <% else %>
             <li class="px-4">
