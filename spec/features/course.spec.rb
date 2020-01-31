@@ -9,8 +9,8 @@ RSpec.feature "course testing", type: :feature do
     )
     @user = User.first
     visit new_user_session_path
-    fill_in 'email', with: 'aimable@gmail.com'
-    fill_in 'password', with: 'password'
+    fill_in 'user_email', with: 'aimable@gmail.com'
+    fill_in 'user_password', with: 'password'
     click_button 'Log in'
 
     course = Course.create(
@@ -59,13 +59,6 @@ RSpec.feature "course testing", type: :feature do
   scenario "Test course list on course index page" do
     visit courses_path
     expect(page).to have_content "ruby"
-  end
-
-  scenario "Test course searching" do
-    visit home_index_path
-    fill_in 'search', with: 'ruby'
-    click_button 'Search'
-    expect(page).to have_content 'ruby'
   end
 
   scenario "Test if user can view course details" do
