@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2020_01_29_121150) do
+=======
+ActiveRecord::Schema.define(version: 2020_01_31_131232) do
+>>>>>>> b3b80d800978f196d266b0761dbbb7f23b19ebdd
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,10 +78,20 @@ ActiveRecord::Schema.define(version: 2020_01_29_121150) do
   end
 
   create_table "purchases", force: :cascade do |t|
+<<<<<<< HEAD
     t.integer "ammount"
+=======
+    t.string "email"
+    t.string "description"
+    t.string "currency"
+    t.string "card"
+    t.integer "user_id"
+    t.integer "course_id"
+    t.integer "ammount"
+    t.string "uuid"
+>>>>>>> b3b80d800978f196d266b0761dbbb7f23b19ebdd
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "uuid"
   end
 
   create_table "users", force: :cascade do |t|

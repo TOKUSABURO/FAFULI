@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   has_many :comments, dependent: :destroy
+  has_many :purchases, dependent: :destroy
+
 
   has_many :courses, dependent: :destroy
   # Include default devise modules. Others available are:
