@@ -12,6 +12,8 @@ class CoursesController < ApplicationController
   end
   # GET /courses/1
   def show
+    @purchased = Purchase.where(user_id: current_user.id).where(course_id: @course.id)
+    #Model.where(condition_a: :a).where(condition_b: :b).all
     @comments = @course.comments
     @comment = @course.comments.build
     if @course.comments.average(:rating).present?
