@@ -35,10 +35,15 @@
 <div class="my-4">
 <h6>OR</h6>
 <%- if devise_mapping.omniauthable? %>
-    <%= link_to "Sign in with google", user_google_omniauth_authorize_path, class: "btn bg-google mb-2 w-75 text-white rounded-pill" %><br />
-    <%= link_to "Sign in with facebook", user_facebook_omniauth_authorize_path, class: "btn bg-facebook mb-2 w-75 text-white rounded-pill" %><br />
-    <%= link_to "Sign in with github", user_github_omniauth_authorize_path, class: "btn bg-github mb-2 w-75 text-white rounded-pill" %><br />
-    <%= link_to "Sign in with twitter", user_twitter_omniauth_authorize_path, class: "btn bg-github mb-2 w-75 text-white rounded-pill" %><br />
+    <%= link_to user_google_omniauth_authorize_path, class: "btn bg-google mb-2 w-75 text-white rounded-pill" do %>
+      <i class="fab fa-google"></i> Sign in with google
+    <% end %><br />
+    <%= link_to user_facebook_omniauth_authorize_path, class: "btn bg-facebook mb-2 w-75 text-white rounded-pill" do %>
+      <i class="fab fa-facebook"></i> Sign in with facebook
+    <% end %><br />
+    <%= link_to user_github_omniauth_authorize_path, class: "btn bg-github mb-2 w-75 text-white rounded-pill" do %>
+    <i class="fab fa-github"></i> Sign in with github
+    <% end %><br />
 <% end %>
 
 </div>

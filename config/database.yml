@@ -24,6 +24,9 @@ default: &default
 development:
   <<: *default
   database: st_first_time_free_development
+  #host: localhost
+  #port: 5432
+
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
