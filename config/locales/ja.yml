@@ -6,12 +6,12 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
-  home: 
-    index: 
+  home:
+    index:
       first: "相談してください"
       second: "最初無料！機会を提供します"
       third: "安心する"
-        
+
   date:
     abbr_day_names:
     - 日
@@ -22,7 +22,7 @@ ja:
     - 金
     - 土
     abbr_month_names:
-    - 
+    -
     - 1月
     - 2月
     - 3月
@@ -48,7 +48,7 @@ ja:
       long: "%Y年%m月%d日(%a)"
       short: "%m/%d"
     month_names:
-    - 
+    -
     - 1月
     - 2月
     - 3月
@@ -210,3 +210,8 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
+
+    #<h4>You can choose a best tutor to work with!!</h4>
+    #FAFULIで先生を探そう！
+    #Most followed courses
+    #人気コース

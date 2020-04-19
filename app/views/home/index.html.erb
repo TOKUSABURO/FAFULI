@@ -18,7 +18,7 @@
 <!-- middle section -->
 <div class="my-4 text-center mx-5 row">
   <div class="col col-sm-6 col-md-8">
-    <h4>You can choose a best tutor to work with!!</h4>
+    <h4>FAFULIであなたにあう先生を探そう！</h4>
       <div class="row row-cols-1 row-cols-md-3">
       <% @teachers.each do |teacher| %>
         <div class="col mb-4">
@@ -40,7 +40,7 @@
     </div>
   </div>
   <div class="col most-followed border-left bg-light col-6 col-md-4">
-    <h5 class="mt-2 text-info">Most followed courses</h5>
+    <h5 class="mt-2 text-info">人気コース</h5>
     <% @most_liked.each do |course| %>
     <%= link_to course_path(course) do %>
     <div class="card mx-auto bg-light shadow-sm m-2" style="width: 100%;">
